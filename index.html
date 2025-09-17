@@ -1,407 +1,449 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haife Media | Transformamos sua Presença Online</title>
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #3bb3b2;
-      --secondary: #6acee0;
-      --dark: #1a202c;
-      --light: #f7fafc;
-      --text: #2d3748;
-    }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--light);
-      color: var(--text);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .animate-on-scroll.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-      -webkit-appearance: none; 
-      margin: 0; 
-    }
-    input[type=number] { -moz-appearance: textfield; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haife Media | Transformamos sua Presença Online</title>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3bb3b2;
+            --secondary: #6acee0;
+            --dark: #1a202c;
+            --light: #f7fafc;
+            --text: #2d3748;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] { -moz-appearance: textfield; }
+        /* Estilo para os ícones Lucide */
+        .lucide {
+            width: 28px;
+            height: 28px;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
 
-  <header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300">
+<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex-shrink-0">
-          <a href="#" class="font-black text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">Haife Media</a>
+        <div class="flex items-center justify-between h-16">
+            <div class="flex-shrink-0">
+                <a href="#" class="font-black text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">Haife Media</a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#pacotes" class="text-gray-600 hover:text-[--primary] font-medium transition">Pacotes e Serviços</a>
+                <a href="#planos" class="text-gray-600 hover:text-[--primary] font-medium transition">Calculadora</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-[--primary] font-medium transition">Portfólio</a>
+                <a href="#contato" class="text-gray-600 hover:text-[--primary] font-medium transition">Contato</a>
+            </nav>
+            <div class="hidden md:block">
+                <a href="#planos" class="bg-[--primary] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-opacity-90 shadow-sm transition">
+                    Calcular meu Plano
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="p-2 rounded-md text-gray-500 hover:text-[--primary] hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
         </div>
-        <nav class="hidden md:flex items-center space-x-8">
-          <a href="#servicos" class="text-gray-600 hover:text-[--primary] font-medium transition">Serviços</a>
-          <a href="#planos" class="text-gray-600 hover:text-[--primary] font-medium transition">Monte seu Plano</a>
-          <a href="#portfolio" class="text-gray-600 hover:text-[--primary] font-medium transition">Portfólio</a>
-          <a href="#contato" class="text-gray-600 hover:text-[--primary] font-medium transition">Contato</a>
-        </nav>
-        <div class="hidden md:block">
-          <a href="#planos" class="bg-[--primary] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-opacity-90 shadow-sm transition">
-            Calcular meu Plano
-          </a>
-        </div>
-        <div class="md:hidden">
-          <button id="menu-btn" class="p-2 rounded-md text-gray-500 hover:text-[--primary] hover:bg-gray-100">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-          </button>
-        </div>
-      </div>
     </div>
     <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-      <a href="#servicos" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Serviços</a>
-      <a href="#planos" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Monte seu Plano</a>
-      <a href="#portfolio" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Portfólio</a>
-      <a href="#contato" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Contato</a>
+        <a href="#pacotes" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Pacotes e Serviços</a>
+        <a href="#planos" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Calculadora</a>
+        <a href="#portfolio" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Portfólio</a>
+        <a href="#contato" class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Contato</a>
     </div>
-  </header>
+</header>
 
-  <main>
+<main>
     <section class="py-20 md:py-32">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-        <div class="animate-on-scroll">
-          <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-[--dark] leading-tight">
-            Transformamos sua <span class="text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">presença online</span> em resultados reais.
-          </h1>
-          <p class="mt-6 text-lg text-gray-600 max-w-xl">
-            Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu público e a crescerem de forma autêntica e impactante.
-          </p>
-          <div class="mt-8 flex gap-4">
-            <a href="#planos" class="bg-[--primary] text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:scale-105 transform transition">
-              Montar meu Plano Ideal
-            </a>
-            <a href="#portfolio" class="bg-white text-[--primary] px-8 py-3 rounded-lg font-bold border border-gray-200 hover:bg-gray-50 transition">
-              Ver Trabalhos
-            </a>
-          </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-on-scroll">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-[--dark] leading-tight">
+                    Transformamos sua <span class="text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">presença online</span> em resultados reais.
+                </h1>
+                <p class="mt-6 text-lg text-gray-600 max-w-xl">
+                    Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu público e a crescerem de forma autêntica e impactante.
+                </p>
+                <div class="mt-8 flex gap-4">
+                    <a href="#pacotes" class="bg-[--primary] text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:scale-105 transform transition">
+                        Ver Pacotes
+                    </a>
+                    <a href="#portfolio" class="bg-white text-[--primary] px-8 py-3 rounded-lg font-bold border border-gray-200 hover:bg-gray-50 transition">
+                        Ver Trabalhos
+                    </a>
+                </div>
+            </div>
+            <div class="animate-on-scroll flex justify-center">
+                <img src="imagens/rhaiane-profile.jpeg" alt="Rhaiane, social media da Haife Media" class="rounded-2xl shadow-2xl w-full max-w-md object-cover"/>
+            </div>
         </div>
-        <div class="animate-on-scroll flex justify-center">
-          <img src="imagens/rhaiane-profile.jpeg" alt="Equipe de Social Media trabalhando" class="rounded-2xl shadow-2xl w-full max-w-md object-cover"/>
-        </div>
-      </div>
     </section>
 
-    <section id="servicos" class="py-20 bg-white">
+    <section id="pacotes" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center animate-on-scroll">
-                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Nossas Soluções</h2>
-                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Tudo que você precisa para decolar</p>
+                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Nossos Pacotes & Serviços</h2>
+                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Soluções para cada necessidade</p>
             </div>
-            <div class="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
-                <div class="animate-on-scroll p-6 bg-gray-50 rounded-xl transition hover:shadow-lg">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-[--primary] text-white">
-                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+
+            <div class="mt-16 animate-on-scroll">
+                <h3 class="text-2xl font-bold text-center text-[--dark] mb-8">Pacotes com Preço Fixo</h3>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
+                        <i data-lucide="package" class="text-[--primary]"></i>
+                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Pacote Criativos</h4>
+                        <p class="text-sm text-gray-500 mt-1">Até 10 artes personalizadas (posts estáticos).</p>
+                        <p class="text-3xl font-black text-[--primary] my-4">R$ 450,00</p>
+                        <a href="#contato" class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero esse!</a>
                     </div>
-                    <h3 class="mt-5 text-lg font-bold text-[--dark]">Gestão de Conteúdo</h3>
-                    <p class="mt-2 text-base text-gray-600">Planejamento, criação, agendamento e publicação de posts que engajam e convertem.</p>
+                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
+                        <i data-lucide="gallery-horizontal-end" class="text-[--primary]"></i>
+                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Carrossel Estratégico</h4>
+                        <p class="text-sm text-gray-500 mt-1">Sequência de até 5 imagens com storytelling.</p>
+                        <p class="text-3xl font-black text-[--primary] my-4">R$ 250,00</p>
+                        <a href="#contato" class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero esse!</a>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
+                        <i data-lucide="contact" class="text-[--primary]"></i>
+                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Cartão de Visita</h4>
+                        <p class="text-sm text-gray-500 mt-1">Design exclusivo, digital ou para impressão.</p>
+                        <p class="text-3xl font-black text-[--primary] my-4">R$ 70,00</p>
+                        <a href="#contato" class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero esse!</a>
+                    </div>
+                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
+                        <i data-lucide="image" class="text-[--primary]"></i>
+                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Banner Digital</h4>
+                        <p class="text-sm text-gray-500 mt-1">Arte em alta qualidade para campanhas e anúncios.</p>
+                        <p class="text-3xl font-black text-[--primary] my-4">R$ 150,00</p>
+                        <a href="#contato" class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero esse!</a>
+                    </div>
                 </div>
-                <div class="animate-on-scroll p-6 bg-gray-50 rounded-xl transition hover:shadow-lg">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-[--primary] text-white">
-                       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </div>
+
+            <div class="mt-20 pt-12 border-t border-gray-200 animate-on-scroll">
+                <h3 class="text-2xl font-bold text-center text-[--dark] mb-8">Planos Personalizados (Sob Orçamento)</h3>
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
+                        <i data-lucide="instagram" class="text-[--primary] mb-3"></i>
+                        <h4 class="font-bold text-[--dark]">Gestão de Stories</h4>
+                        <p class="text-xs text-gray-500 mt-1">Conteúdos interativos e estratégicos.</p>
+                        <p class="mt-2 font-semibold text-gray-700">A partir de <span class="text-[--primary] font-bold">R$ 350/mês</span></p>
                     </div>
-                    <h3 class="mt-5 text-lg font-bold text-[--dark]">Produção de Vídeos (Reels)</h3>
-                    <p class="mt-2 text-base text-gray-600">Roteirização, captação e edição de vídeos curtos e dinâmicos para maximizar seu alcance.</p>
-                </div>
-                <div class="animate-on-scroll p-6 bg-gray-50 rounded-xl transition hover:shadow-lg">
-                    <div class="flex items-center justify-center h-12 w-12 rounded-lg bg-[--primary] text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
+                        <i data-lucide="camera" class="text-[--primary] mb-3"></i>
+                        <h4 class="font-bold text-[--dark]">Fotografia Móvel</h4>
+                        <p class="text-xs text-gray-500 mt-1">Incluso edição e tratamento de imagens.</p>
+                        <p class="mt-2 font-semibold text-gray-700">A partir de <span class="text-[--primary] font-bold">R$ 400</span></p>
                     </div>
-                    <h3 class="mt-5 text-lg font-bold text-[--dark]">Design de Criativos</h3>
-                    <p class="mt-2 text-base text-gray-600">Criação de artes, carrosséis e banners com design profissional alinhado à sua identidade visual.</p>
+                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
+                        <i data-lucide="clapperboard" class="text-[--primary] mb-3"></i>
+                        <h4 class="font-bold text-[--dark]">Vídeos Comerciais</h4>
+                        <p class="text-xs text-gray-500 mt-1">Vídeos de 30-60s para Reels e TikTok.</p>
+                        <p class="mt-2 font-semibold text-gray-700">A partir de <span class="text-[--primary] font-bold">R$ 200</span></p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl text-center ring-2 ring-[--primary] shadow-lg flex flex-col items-center">
+                        <i data-lucide="sparkles" class="text-[--primary] mb-3"></i>
+                        <h4 class="font-bold text-[--dark]">Gestão Completa</h4>
+                        <p class="text-xs text-gray-500 mt-1">A solução completa para suas redes sociais.</p>
+                        <p class="mt-2 font-semibold text-gray-700">A partir de <span class="text-[--primary] font-bold">R$ 850</span></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="planos" class="py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center animate-on-scroll">
-          <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Seu Plano, Suas Regras</h2>
-          <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Monte o pacote ideal para o seu negócio</p>
-          <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Selecione os serviços e a quantidade que desejar. O orçamento é calculado na hora!</p>
-        </div>
-
-        <div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-8 items-start">
-          <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-on-scroll" id="service-list">
-            
-            <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Posts para Feed" data-price="100">
-              <h4 class="text-lg font-bold text-[--dark]">Posts para Feed</h4>
-              <p class="text-sm text-gray-500 mt-1">Artes estáticas ou carrosséis.</p>
-              <p class="text-2xl font-black text-[--primary] my-3">R$ 100 <span class="text-sm font-medium text-gray-500">/unid</span></p>
-              <div class="flex items-center gap-2">
-                <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
-                <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
-                <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
-              </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center animate-on-scroll">
+                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Calculadora Interativa</h2>
+                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Ou monte um plano avulso</p>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Selecione os serviços e a quantidade que desejar. O orçamento é calculado na hora!</p>
             </div>
 
-            <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Sequências de Stories" data-price="80">
-              <h4 class="text-lg font-bold text-[--dark]">Sequências de Stories</h4>
-              <p class="text-sm text-gray-500 mt-1">Pacote com 3 a 5 stories.</p>
-              <p class="text-2xl font-black text-[--primary] my-3">R$ 80 <span class="text-sm font-medium text-gray-500">/seq</span></p>
-              <div class="flex items-center gap-2">
-                <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
-                <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
-                <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
-              </div>
-            </div>
+            <div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-8 items-start">
+                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-on-scroll" id="service-list">
 
-            <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Vídeo Reel (30-60s)" data-price="250">
-              <h4 class="text-lg font-bold text-[--dark]">Vídeo Reel (30-60s)</h4>
-              <p class="text-sm text-gray-500 mt-1">Roteiro, captação e edição.</p>
-              <p class="text-2xl font-black text-[--primary] my-3">R$ 250 <span class="text-sm font-medium text-gray-500">/unid</span></p>
-              <div class="flex items-center gap-2">
-                <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
-                <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
-                <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
-              </div>
-            </div>
+                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Posts para Feed" data-price="100">
+                        <h4 class="text-lg font-bold text-[--dark]">Posts para Feed</h4>
+                        <p class="text-sm text-gray-500 mt-1">Artes estáticas ou carrosséis.</p>
+                        <p class="text-2xl font-black text-[--primary] my-3">R$ 100 <span class="text-sm font-medium text-gray-500">/unid</span></p>
+                        <div class="flex items-center gap-2">
+                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
+                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
+                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
+                        </div>
+                    </div>
 
-            <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Fotografia de Produtos" data-price="500">
-              <h4 class="text-lg font-bold text-[--dark]">Fotografia de Produtos</h4>
-              <p class="text-sm text-gray-500 mt-1">Sessão para 10 produtos.</p>
-              <p class="text-2xl font-black text-[--primary] my-3">R$ 500 <span class="text-sm font-medium text-gray-500">/sessão</span></p>
-              <div class="flex items-center gap-2">
-                <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
-                <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
-                <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
-              </div>
-            </div>
-          </div>
+                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Sequências de Stories" data-price="80">
+                        <h4 class="text-lg font-bold text-[--dark]">Sequências de Stories</h4>
+                        <p class="text-sm text-gray-500 mt-1">Pacote com 3 a 5 stories.</p>
+                        <p class="text-2xl font-black text-[--primary] my-3">R$ 80 <span class="text-sm font-medium text-gray-500">/seq</span></p>
+                        <div class="flex items-center gap-2">
+                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
+                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
+                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
+                        </div>
+                    </div>
 
-          <div class="mt-10 lg:mt-0 lg:sticky top-24 animate-on-scroll">
-            <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
-              <h3 class="text-xl font-bold text-center text-[--dark]">Resumo do seu Plano</h3>
-              <div id="summary-items" class="mt-6 space-y-3 text-sm min-h-[80px]">
-                <p id="empty-cart-message" class="text-gray-500 text-center py-6">Selecione os serviços que você deseja.</p>
-              </div>
-              <div class="border-t border-gray-200 mt-6 pt-4">
-                <div class="flex justify-between items-center">
-                  <span class="text-base font-medium text-gray-600">Total Mensal Estimado:</span>
-                  <span id="total-price" class="text-2xl font-black text-[--dark]">R$ 0,00</span>
+                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Vídeo Reel (30-60s)" data-price="250">
+                        <h4 class="text-lg font-bold text-[--dark]">Vídeo Reel (30-60s)</h4>
+                        <p class="text-sm text-gray-500 mt-1">Roteiro, captação e edição.</p>
+                        <p class="text-2xl font-black text-[--primary] my-3">R$ 250 <span class="text-sm font-medium text-gray-500">/unid</span></p>
+                        <div class="flex items-center gap-2">
+                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
+                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
+                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
+                        </div>
+                    </div>
+
+                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Fotografia de Produtos" data-price="500">
+                        <h4 class="text-lg font-bold text-[--dark]">Fotografia de Produtos</h4>
+                        <p class="text-sm text-gray-500 mt-1">Sessão para 10 produtos.</p>
+                        <p class="text-2xl font-black text-[--primary] my-3">R$ 500 <span class="text-sm font-medium text-gray-500">/sessão</span></p>
+                        <div class="flex items-center gap-2">
+                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>
+                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>
+                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <a href="#contato" class="block w-full text-center bg-[--primary] text-white mt-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition shadow">
-                Solicitar Orçamento
-              </a>
+
+                <div class="mt-10 lg:mt-0 lg:sticky top-24 animate-on-scroll">
+                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-xl font-bold text-center text-[--dark]">Resumo do seu Plano</h3>
+                        <div id="summary-items" class="mt-6 space-y-3 text-sm min-h-[80px]">
+                            <p id="empty-cart-message" class="text-gray-500 text-center py-6">Selecione os serviços que você deseja.</p>
+                        </div>
+                        <div class="border-t border-gray-200 mt-6 pt-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-base font-medium text-gray-600">Total Mensal Estimado:</span>
+                                <span id="total-price" class="text-2xl font-black text-[--dark]">R$ 0,00</span>
+                            </div>
+                        </div>
+                        <a href="#contato" class="block w-full text-center bg-[--primary] text-white mt-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition shadow">
+                            Solicitar Orçamento
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
-    
-    <section id="portfolio" class="py-20 bg-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center animate-on-scroll">
-            <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Cases de Sucesso</h2>
-            <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Nosso trabalho fala por nós</p>
+
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center animate-on-scroll">
+                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Cases de Sucesso</h2>
+                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Nosso trabalho fala por nós</p>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop" alt="Projeto de portfólio 1" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
+                <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1472&auto=format&fit=crop" alt="Projeto de portfólio 2" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
+                <img src="https://images.unsplash.com/photo-1559028012-215268f6358c?q=80&w=1374&auto=format&fit=crop" alt="Projeto de portfólio 3" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
+            </div>
         </div>
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80" alt="Projeto de portfólio 1" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-          <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Projeto de portfólio 2" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-          <img src="imagens/notebook.jpg" alt="Projeto de portfólio 3" class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-        </div>
-      </div>
     </section>
 
     <section id="contato" class="py-20 bg-gradient-to-br from-[--primary] to-[--secondary]">
-      <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-        <h2 class="text-3xl font-extrabold text-center text-white drop-shadow-md">Vamos fechar negócio?</h2>
-        <p class="text-center text-white/90 mt-2">Preencha seus dados, confirme o plano e envie para nós no WhatsApp!</p>
-        <form id="contact-form" class="mt-8 bg-white p-8 rounded-2xl shadow-2xl space-y-6">
-          <div>
-            <label for="name" class="font-semibold block mb-2 text-gray-700">Seu Nome</label>
-            <input type="text" id="name" class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition" placeholder="Nome e Sobrenome" required>
-          </div>
-          <div>
-            <label for="message" class="font-semibold block mb-2 text-gray-700">Mensagem Adicional (Opcional)</label>
-            <textarea id="message" rows="3" class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition" placeholder="Algo mais que gostaria de nos dizer?"></textarea>
-          </div>
-          <button type="submit" class="bg-green-500 w-full text-white font-bold py-3.5 rounded-lg hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.05.1.03.22 0 .36-.02.12-.08.23-.16.33-.08.1-.17.18-.28.25a.5.5 0 01-.22.08l-.1.02a1.44 1.44 0 01-.48 0c-.2-.04-.38-.1-.55-.17-.1-.08-.18-.17-.25-.28s-.13-.2-.18-.3l-.02-.05a1.8 1.8 0 01-.2-1.1.69.69 0 01.11-.4c.05-.1.1-.2.18-.28.08-.08.15-.15.22-.2l.08-.1.05-.05a.29.29 0 00.06-.1c.01-.06 0-.12-.04-.18s-.08-.12-.15-.18-.15-.12-.25-.18a6.3 6.3 0 00-2.5-1.4.3.3 0 00-.1-.02c-.18 0-.34.02-.48.1zM12 2a10 10 0 100 20 10 10 0 000-20zm0 18.5a8.5 8.5 0 110-17 8.5 8.5 0 010 17z"/></svg>
-            Enviar pelo WhatsApp
-          </button>
-        </form>
-      </div>
+        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
+            <h2 class="text-3xl font-extrabold text-center text-white drop-shadow-md">Vamos fechar negócio?</h2>
+            <p class="text-center text-white/90 mt-2">Preencha seus dados, confirme o plano e envie para nós no WhatsApp!</p>
+            <form id="contact-form" class="mt-8 bg-white p-8 rounded-2xl shadow-2xl space-y-6">
+                <div>
+                    <label for="name" class="font-semibold block mb-2 text-gray-700">Seu Nome</label>
+                    <input type="text" id="name" class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition" placeholder="Nome e Sobrenome" required>
+                </div>
+                <div>
+                    <label for="message" class="font-semibold block mb-2 text-gray-700">Mensagem Adicional (Opcional)</label>
+                    <textarea id="message" rows="3" class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition" placeholder="Algo mais que gostaria de nos dizer?"></textarea>
+                </div>
+                <button type="submit" class="bg-green-500 w-full text-white font-bold py-3.5 rounded-lg hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M16.75 13.96c.25.13.41.2.46.3.05.1.03.22 0 .36-.02.12-.08.23-.16.33-.08.1-.17.18-.28.25a.5.5 0 01-.22.08l-.1.02a1.44 1.44 0 01-.48 0c-.2-.04-.38-.1-.55-.17-.1-.08-.18-.17-.25-.28s-.13-.2-.18-.3l-.02-.05a1.8 1.8 0 01-.2-1.1.69.69 0 01.11-.4c.05-.1.1-.2.18-.28.08-.08.15-.15.22-.2l.08-.1.05-.05a.29.29 0 00.06-.1c.01-.06 0-.12-.04-.18s-.08-.12-.15-.18-.15-.12-.25-.18a6.3 6.3 0 00-2.5-1.4.3.3 0 00-.1-.02c-.18 0-.34.02-.48.1zM12 2a10 10 0 100 20 10 10 0 000-20zm0 18.5a8.5 8.5 0 110-17 8.5 8.5 0 010 17z"/></svg>
+                    Enviar pelo WhatsApp
+                </button>
+            </form>
+        </div>
     </section>
-  </main>
-  
-  <footer class="bg-gray-800 text-white">
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
-          <p class="text-2xl font-bold">Haife Media</p>
-          <p class="mt-4 text-base text-gray-400">&copy; 2025 Haife Media. Todos os direitos reservados.</p>
-          <div class="mt-6 flex justify-center space-x-6">
-              <a href="#" class="text-gray-400 hover:text-white">
-                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.28C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6.13,17.26 8.13,17.29C6.67,18.45 4.84,19.17 2.83,19.17C2.5,19.17 2.17,19.15 1.85,19.11C3.85,20.41 6.28,21.16 8.84,21.16C16,21.16 20.24,15.39 20.24,10.1C20.24,9.91 20.24,9.73 20.23,9.54C21.04,8.96 21.8,8.23 22.46,7.36L22.46,6Z"></path></svg>
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white">
-                  <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.062-.772-.034-1.684.192-2.492.203-.728.996-4.218.996-4.218s-.279-.557-.279-1.383c0-1.3 1.002-2.267 2.245-2.267.972 0 1.427.724 1.427 1.603 0 .976-.627 2.431-.951 3.787-.266 1.127.565 2.046 1.699 2.046 2.029 0 3.58-2.122 3.58-5.22 0-2.734-1.958-4.661-4.99-4.661-3.398 0-5.383 2.548-5.383 5.072 0 .991.371 2.063.834 2.656.095.121.111.215.082.332-.033.14-.111.465-.143.582-.036.126-.188.182-.332.121-1.299-.51-2.115-1.996-2.115-3.527 0-2.885 2.094-5.592 6.151-5.592 3.225 0 5.768 2.28 5.768 5.045 0 3.09-1.846 5.564-4.411 5.564-1.258 0-2.433-.655-2.84-1.428-.158.625-.544 2.158-.693 2.73-.252.993-.997 1.848-1.527 2.535C9.373 21.699 10.655 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" clip-rule="evenodd"></path></svg>
-              </a>
-          </div>
-      </div>
-  </footer>
+</main>
 
-  <script>
+<footer class="bg-gray-800 text-white">
+    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
+        <p class="text-2xl font-bold">Haife Media</p>
+        <p class="mt-4 text-base text-gray-400">&copy; 2025 Haife Media. Todos os direitos reservados.</p>
+        <div class="mt-6 flex justify-center space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.28C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6.13,17.26 8.13,17.29C6.67,18.45 4.84,19.17 2.83,19.17C2.5,19.17 2.17,19.15 1.85,19.11C3.85,20.41 6.28,21.16 8.84,21.16C16,21.16 20.24,15.39 20.24,10.1C20.24,9.91 20.24,9.73 20.23,9.54C21.04,8.96 21.8,8.23 22.46,7.36L22.46,6Z"></path></svg>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white">
+                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.062-.772-.034-1.684.192-2.492.203-.728.996-4.218.996-4.218s-.279-.557-.279-1.383c0-1.3 1.002-2.267 2.245-2.267.972 0 1.427.724 1.427 1.603 0 .976-.627 2.431-.951 3.787-.266 1.127.565 2.046 1.699 2.046 2.029 0 3.58-2.122 3.58-5.22 0-2.734-1.958-4.661-4.99-4.661-3.398 0-5.383 2.548-5.383 5.072 0 .991.371 2.063.834 2.656.095.121.111.215.082.332-.033.14-.111.465-.143.582-.036.126-.188.182-.332.121-1.299-.51-2.115-1.996-2.115-3.527 0-2.885 2.094-5.592 6.151-5.592 3.225 0 5.768 2.28 5.768 5.045 0 3.09-1.846 5.564-4.411 5.564-1.258 0-2.433-.655-2.84-1.428-.158.625-.544 2.158-.693 2.73-.252.993-.997 1.848-1.527 2.535C9.373 21.699 10.655 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" clip-rule="evenodd"></path></svg>
+            </a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Ativa a biblioteca de ícones Lucide
+    lucide.createIcons();
+
     document.addEventListener('DOMContentLoaded', () => {
-      const whatsappNumber = "5547999999999";
-      const menuBtn = document.getElementById('menu-btn');
-      const mobileMenu = document.getElementById('mobile-menu');
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-
-      const animatedElements = document.querySelectorAll('.animate-on-scroll');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
+        const whatsappNumber = "5547999999999"; // <-- Lembre-se de colocar seu número aqui
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
         });
-      }, { threshold: 0.1 });
-      animatedElements.forEach(el => observer.observe(el));
 
-      const serviceItems = document.querySelectorAll('.service-item');
-      const summaryItemsContainer = document.getElementById('summary-items');
-      const totalPriceEl = document.getElementById('total-price');
-      const emptyCartMessage = document.getElementById('empty-cart-message');
-      const contactForm = document.getElementById('contact-form');
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
 
-      const formatCurrency = (value) => {
-        return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-      };
+        const serviceItems = document.querySelectorAll('.service-item');
+        const summaryItemsContainer = document.getElementById('summary-items');
+        const totalPriceEl = document.getElementById('total-price');
+        const emptyCartMessage = document.getElementById('empty-cart-message');
+        const contactForm = document.getElementById('contact-form');
 
-      const updateCalculator = () => {
-        let totalPrice = 0;
-        let summaryHTML = '';
-        
-        serviceItems.forEach(item => {
-          const name = item.dataset.serviceName;
-          const price = parseFloat(item.dataset.price);
-          const quantity = parseInt(item.querySelector('.quantity-input').value);
+        const formatCurrency = (value) => {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        };
 
-          if (quantity > 0) {
-            const itemTotal = price * quantity;
-            totalPrice += itemTotal;
-            summaryHTML += `
+        const updateCalculator = () => {
+            let totalPrice = 0;
+            let summaryHTML = '';
+
+            serviceItems.forEach(item => {
+                const name = item.dataset.serviceName;
+                const price = parseFloat(item.dataset.price);
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+
+                if (quantity > 0) {
+                    const itemTotal = price * quantity;
+                    totalPrice += itemTotal;
+                    summaryHTML += `
               <div class="flex justify-between items-center text-gray-700">
                 <span>${name} (x${quantity})</span>
                 <span class="font-semibold">${formatCurrency(itemTotal)}</span>
               </div>
             `;
-          }
-        });
-
-        emptyCartMessage.style.display = summaryHTML === '' ? 'block' : 'none';
-        summaryItemsContainer.innerHTML = summaryHTML || emptyCartMessage.outerHTML;
-        totalPriceEl.textContent = formatCurrency(totalPrice);
-      };
-
-      serviceItems.forEach(item => {
-        const plusBtn = item.querySelector('.plus');
-        const minusBtn = item.querySelector('.minus');
-        const input = item.querySelector('.quantity-input');
-
-        plusBtn.addEventListener('click', () => {
-          input.value = parseInt(input.value) + 1;
-          updateCalculator();
-          // Opcional: Rastrear clique no botão de adicionar
-          gtag('event', 'add_service', {
-            'event_category': 'Calculator',
-            'event_label': item.dataset.serviceName
-          });
-        });
-
-        minusBtn.addEventListener('click', () => {
-          let currentValue = parseInt(input.value);
-          if (currentValue > 0) {
-            input.value = currentValue - 1;
-            updateCalculator();
-            // Opcional: Rastrear clique no botão de remover
-            gtag('event', 'remove_service', {
-              'event_category': 'Calculator',
-              'event_label': item.dataset.serviceName
+                }
             });
-          }
-        });
-      });
-      
-      const generatePlanSummaryText = () => {
-        let planText = "";
-        let totalPrice = 0;
+
+            emptyCartMessage.style.display = summaryHTML === '' ? 'block' : 'none';
+            summaryItemsContainer.innerHTML = summaryHTML || emptyCartMessage.outerHTML;
+            totalPriceEl.textContent = formatCurrency(totalPrice);
+        };
 
         serviceItems.forEach(item => {
-          const name = item.dataset.serviceName;
-          const price = parseFloat(item.dataset.price);
-          const quantity = parseInt(item.querySelector('.quantity-input').value);
+            const plusBtn = item.querySelector('.plus');
+            const minusBtn = item.querySelector('.minus');
+            const input = item.querySelector('.quantity-input');
 
-          if (quantity > 0) {
-            totalPrice += price * quantity;
-            planText += `- ${name}: ${quantity} unid.\n`;
-          }
+            plusBtn.addEventListener('click', () => {
+                input.value = parseInt(input.value) + 1;
+                updateCalculator();
+                gtag('event', 'add_service', { 'event_category': 'Calculator', 'event_label': item.dataset.serviceName });
+            });
+
+            minusBtn.addEventListener('click', () => {
+                let currentValue = parseInt(input.value);
+                if (currentValue > 0) {
+                    input.value = currentValue - 1;
+                    updateCalculator();
+                    gtag('event', 'remove_service', { 'event_category': 'Calculator', 'event_label': item.dataset.serviceName });
+                }
+            });
         });
 
-        if (planText === "") {
-          return "Nenhum plano foi montado. Gostaria de um orçamento personalizado.";
-        }
+        const generatePlanSummaryText = () => {
+            let planText = "";
+            let totalPrice = 0;
 
-        return `*Plano Montado:*\n${planText}\n*Total Estimado: ${formatCurrency(totalPrice)}*`;
-      };
+            serviceItems.forEach(item => {
+                const name = item.dataset.serviceName;
+                const price = parseFloat(item.dataset.price);
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
 
-      contactForm.addEventListener('submit', (event) => {
-        event.preventDefault(); 
-        const clientName = document.getElementById('name').value;
-        const clientMessage = document.getElementById('message').value;
-        const planSummary = generatePlanSummaryText();
-        let message = `Olá, Haife Media! 👋\n\nMeu nome é *${clientName}*.\n\nGostaria de solicitar um orçamento para o plano que montei no site:\n\n${planSummary}`;
-        
-        if (clientMessage.trim() !== '') {
-            message += `\n\n*Mensagem adicional:*\n${clientMessage}`;
-        }
-        
-        message += `\n\n---\nEnviado via site.`;
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, '_blank');
-        // Rastrear envio do formulário
-        gtag('event', 'submit_form', {
-          'event_category': 'Contact',
-          'event_label': 'WhatsApp Form Submission'
+                if (quantity > 0) {
+                    totalPrice += price * quantity;
+                    planText += `- ${name}: ${quantity} unid.\n`;
+                }
+            });
+
+            if (planText === "") {
+                return "Nenhum plano foi montado na calculadora. Gostaria de um orçamento personalizado.";
+            }
+
+            return `*Plano Montado na Calculadora:*\n${planText}\n*Total Estimado: ${formatCurrency(totalPrice)}*`;
+        };
+
+        contactForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const clientName = document.getElementById('name').value;
+            const clientMessage = document.getElementById('message').value;
+            const planSummary = generatePlanSummaryText();
+            let message = `Olá, Haife Media! 👋\n\nMeu nome é *${clientName}*.\n\nGostaria de solicitar um orçamento.`;
+
+            if (planSummary.includes("Nenhum plano")) {
+                message += `\n\n*Mensagem:*\n${clientMessage || 'Gostaria de saber mais sobre seus pacotes.'}`;
+            } else {
+                message += `\n\n${planSummary}`;
+                if (clientMessage.trim() !== '') {
+                    message += `\n\n*Mensagem adicional:*\n${clientMessage}`;
+                }
+            }
+
+            message += `\n\n---\nEnviado via site.`;
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+            gtag('event', 'submit_form', { 'event_category': 'Contact', 'event_label': 'WhatsApp Form Submission' });
         });
-      });
 
-      updateCalculator();
+        updateCalculator();
     });
-  </script>
+</script>
 </body>
 </html>
