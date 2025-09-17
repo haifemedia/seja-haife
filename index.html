@@ -50,7 +50,7 @@
             overflow-x: hidden; /* Evita barra de rolagem horizontal devido ao fundo */
         }
 
-        /* ANIMAÇÃO DE FUNDO ADICIONADA AQUI COM PSEUDO-ELEMENTO */
+        /* ANIMAÇÃO DE FUNDO SUTIL */
         body::before {
             content: '';
             position: fixed;
@@ -60,9 +60,9 @@
             height: 100%;
             background: linear-gradient(45deg, var(--light) 0%, var(--primary) 25%, var(--secondary) 50%, var(--light) 75%, var(--primary) 100%);
             background-size: 300% 300%;
-            animation: subtleGradientMove 12s ease infinite alternate; /* Animação mais suave */
+            animation: subtleGradientMove 20s ease infinite alternate; /* Duração aumentada para 20s */
             z-index: -1; /* Garante que fique atrás do conteúdo */
-            opacity: 0.3; /* Sutilmente visível */
+            opacity: 0.2; /* Opacidade reduzida para 0.2 */
         }
 
         @keyframes subtleGradientMove {
