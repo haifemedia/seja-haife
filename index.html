@@ -6,8 +6,7 @@
     <title>Haife Media | Transformamos sua Presença Online</title>
 
     <meta property="og:title" content="Haife Media | Transformamos sua Presença Online">
-    <meta property="og:description"
-          content="Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu público e a crescerem de forma autêntica e impactante.">
+    <meta property="og:description" content="Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu público e a crescerem de forma autêntica e impactante.">
     <meta property="og:image" content="https://haifemedia.com.br/imagens/og-image.png">
     <meta property="og:url" content="https://haifemedia.com.br">
     <meta property="og:type" content="website">
@@ -17,11 +16,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
@@ -31,16 +26,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --primary: #3bb3b2;
+            --primary-light: #5ccbc9;
+            --primary-dark: #2a8f8e;
             --secondary: #6acee0;
-            --dark: #1a202c;
-            --light: #f7fafc;
-            --text: #2d3748;
+            --dark: #0f172a;
+            --dark-soft: #1e293b;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -48,538 +58,1146 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--light); /* Mantido como base */
-            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            position: relative; /* Necessário para o pseudo-elemento */
-            overflow-x: hidden; /* Evita barra de rolagem horizontal devido ao fundo */
+            line-height: 1.6;
         }
 
-        /* ANIMAÇÃO DE FUNDO SUTIL */
-        body::before {
+        ::selection {
+            background: var(--primary);
+            color: white;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .btn-primary {
+            background: var(--dark);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
             content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, var(--light) 0%, var(--primary) 25%, var(--secondary) 50%, var(--light) 75%, var(--primary) 100%);
-            background-size: 300% 300%;
-            animation: subtleGradientMove 20s ease infinite alternate; /* Duração aumentada para 20s */
-            z-index: -1; /* Garante que fique atrás do conteúdo */
-            opacity: 0.2; /* Opacidade reduzida para 0.2 */
-        }
-
-        @keyframes subtleGradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .animate-on-scroll {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.3s ease;
         }
 
-        .animate-on-scroll.is-visible {
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -12px rgba(59, 179, 178, 0.35);
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--dark);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1.5px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--dark);
+            background: var(--dark);
+            color: white;
+        }
+
+        .nav-link {
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--dark);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .fade-up {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        input[type=number] {
-            -moz-appearance: textfield;
+        .card:hover {
+            border-color: var(--gray-200);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
-        .lucide {
-            width: 28px;
-            height: 28px;
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gray-50);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            background: var(--primary);
+        }
+
+        .card:hover .card-icon svg {
+            color: white;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .portfolio-item img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 24px;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid var(--gray-100);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 179, 178, 0.1);
+        }
+
+        .service-card:hover {
+            border-color: var(--gray-200);
+            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--gray-600) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 179, 178, 0.1);
         }
 
         .whatsapp-float {
-            animation: pulse 2s infinite;
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 50;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-float img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gray-500);
+        }
+
+        .section-label::before {
+            content: '';
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 1px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gray-200), transparent);
+        }
+
+        /* Hero Carousel */
+        .hero-carousel {
+            position: relative;
+            height: 85vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: var(--dark);
+        }
+
+        .carousel-track {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            position: relative;
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-slide img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .carousel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 100%);
+        }
+
+        .carousel-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 0 24px;
+        }
+
+        .carousel-tag {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(59, 179, 178, 0.2);
+            border: 1px solid rgba(59, 179, 178, 0.4);
+            border-radius: 100px;
+            color: var(--secondary);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .carousel-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            letter-spacing: -1px;
+        }
+
+        .carousel-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .carousel-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 32px;
+            padding: 16px 36px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(59, 179, 178, 0.4);
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 20;
+            width: 56px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .carousel-nav.prev { left: 32px; }
+        .carousel-nav.next { right: 32px; }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 20;
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .carousel-dot:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .carousel-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--primary);
+            z-index: 20;
+            transition: width 0.1s linear;
+        }
+
+        @media (max-width: 768px) {
+            .hero-carousel {
+                height: 70vh;
+                min-height: 500px;
             }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+
+            .carousel-nav {
+                width: 44px;
+                height: 44px;
             }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+
+            .carousel-nav.prev { left: 16px; }
+            .carousel-nav.next { right: 16px; }
+
+            .carousel-dots {
+                bottom: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 56px;
+                height: 56px;
+            }
+
+            .whatsapp-float img {
+                width: 28px;
+                height: 28px;
             }
         }
     </style>
 </head>
-<body class="bg-gray-50">
+<body>
 
-<header class="bg-white/80 backdrop-blur-lg shadow-sm sticky top-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex-shrink-0">
-                <a href="#"
-                   class="font-black text-2xl tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">Haife
-                    Media</a>
-            </div>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#pacotes" class="text-gray-600 hover:text-[--primary] font-medium transition">Pacotes e
-                    Serviços</a>
-                <a href="#planos" class="text-gray-600 hover:text-[--primary] font-medium transition">Calculadora</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-[--primary] font-medium transition">Portfólio</a>
-                <a href="#contato" class="text-gray-600 hover:text-[--primary] font-medium transition">Contato</a>
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20">
+            <a href="#" class="flex items-center gap-3">
+                <img src="imagens/favicon.png" alt="Haife Media" class="h-9 w-auto">
+                <span class="font-bold text-xl text-[--dark]">Haife Media</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-10">
+                <a href="#pacotes" class="nav-link">Pacotes</a>
+                <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#contato" class="nav-link">Contato</a>
             </nav>
-            <div class="hidden md:block">
-                <a href="#planos"
-                   class="bg-[--primary] text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-opacity-90 shadow-sm transition">
-                    Calcular meu Plano
-                </a>
-            </div>
-            <div class="md:hidden">
-                <button id="menu-btn" class="p-2 rounded-md text-gray-500 hover:text-[--primary] hover:bg-gray-100">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                              d="M4 6h16M4 12h16m-7 6h7"></path>
-                    </svg>
-                </button>
-            </div>
+
+            <a href="#contato" class="btn-primary hidden md:inline-flex">
+                <span>Começar Agora</span>
+            </a>
+
+            <button id="menu-btn" class="md:hidden p-2 -mr-2">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
         </div>
     </div>
-    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
-        <a href="#pacotes"
-           class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Pacotes e
-            Serviços</a>
-        <a href="#planos"
-           class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Calculadora</a>
-        <a href="#portfolio"
-           class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Portfólio</a>
-        <a href="#contato"
-           class="block px-4 py-3 text-base font-medium text-gray-600 hover:bg-gray-50 hover:text-[--primary]">Contato</a>
+
+    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
+        <div class="px-6 py-6 space-y-4">
+            <a href="#pacotes" class="block text-gray-700 font-medium py-2">Pacotes</a>
+            <a href="#portfolio" class="block text-gray-700 font-medium py-2">Portfólio</a>
+            <a href="#contato" class="block text-gray-700 font-medium py-2">Contato</a>
+            <a href="#contato" class="block btn-primary text-center mt-4">Começar Agora</a>
+        </div>
     </div>
 </header>
 
 <main>
-    <section class="py-20 md:py-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-            <div class="animate-on-scroll">
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-[--dark] leading-tight">
-                    Transformamos sua <span
-                        class="text-transparent bg-clip-text bg-gradient-to-r from-[--primary] to-[--secondary]">presença online</span>
-                    em resultados reais.
-                </h1>
-                <p class="mt-6 text-lg text-gray-600 max-w-xl">
-                    Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu
-                    público e a crescerem de forma autêntica e impactante.
+    <section class="min-h-screen flex items-center pt-20 pb-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white"></div>
+        <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#3bb3b2]/5 to-[#6acee0]/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#3bb3b2]/5 to-transparent rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                <div>
+                    <div class="fade-up stagger-1">
+                        <span class="section-label">Transformação Digital</span>
+                    </div>
+
+                    <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[--dark] leading-[1.1] tracking-tight fade-up stagger-2">
+                        Correria e Marketing<br>
+                        <span class="text-gradient">sem estratégia?</span>
+                    </h1>
+
+                    <p class="mt-8 text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg fade-up stagger-3">
+                        Se você é <strong class="text-gray-900">empreendedor</strong> ou um profissional em busca de uma 
+                        <strong class="text-gray-900">agência parceira e confiável</strong>, está no lugar certo.
+                    </p>
+
+                    <p class="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg fade-up stagger-3">
+                        Vamos te ajudar a <span class="text-gradient font-semibold">crescer seu negócio de forma estratégica</span>.
+                    </p>
+
+                    <div class="mt-10 flex flex-wrap items-center gap-4 fade-up stagger-4">
+                        <a href="#contato" class="btn-primary">
+                            <span>Falar com Especialista</span>
+                        </a>
+                        <a href="#portfolio" class="btn-outline">
+                            Ver Trabalhos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative fade-up">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#3bb3b2]/10 to-[#6acee0]/10 rounded-3xl transform rotate-3"></div>
+                        <img src="imagens/rhaiane-profile.jpeg" alt="Rhaiane, social media da Haife Media"
+                             class="relative rounded-2xl shadow-2xl w-full"/>
+
+                        <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-lg border border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-sm text-gray-900">+300%</p>
+                                    <p class="text-xs text-gray-500">engajamento médio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 pt-16 border-t border-gray-100">
+                <div class="grid grid-cols-3 gap-8 md:gap-16">
+                    <div class="text-center fade-up stagger-1">
+                        <p class="stat-number">98%</p>
+                        <p class="mt-2 text-sm text-gray-500 font-medium">Taxa de satisfação</p>
+                    </div>
+                    <div class="text-center fade-up stagger-2">
+                        <p class="stat-number">+150</p>
+                        <p class="mt-2 text-sm text-gray-500 font-medium">Marcas atendidas</p>
+                    </div>
+                    <div class="text-center fade-up stagger-3">
+                        <p class="stat-number">3+</p>
+                        <p class="mt-2 text-sm text-gray-500 font-medium">Anos de experiência</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Carousel -->
+    <section id="showcase" class="hero-carousel">
+        <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" alt="Dashboard de métricas">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Gestão de Redes</span>
+                    <h2 class="carousel-title">Transforme seguidores em clientes</h2>
+                    <p class="carousel-subtitle">Estratégias que conectam sua marca ao público certo, no momento certo.</p>
+                    <a href="#contato" class="carousel-btn">
+                        Quero resultados assim
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1920&q=80" alt="Conteúdo para Instagram">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Conteúdo Profissional</span>
+                    <h2 class="carousel-title">Fotos e vídeos que impactam</h2>
+                    <p class="carousel-subtitle">Produção audiovisual completa para sua marca se destacar no feed e nos stories.</p>
+                    <a href="#pacotes" class="carousel-btn">
+                        Ver pacotes
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80" alt="Estratégia digital">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Estratégia Digital</span>
+                    <h2 class="carousel-title">Dados que guiam decisões</h2>
+                    <p class="carousel-subtitle">Relatórios claros e métricas de performance para você acompanhar o crescimento.</p>
+                    <a href="#contato" class="carousel-btn">
+                        Começar hoje
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80" alt="Branding">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-content">
+                    <span class="carousel-tag">Branding & Identidade</span>
+                    <h2 class="carousel-title">Uma marca que comunica</h2>
+                    <p class="carousel-subtitle">Design consistente que transmite os valores do seu negócio em cada publicação.</p>
+                    <a href="#contato" class="carousel-btn">
+                        Vamos conversar
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-nav prev" id="carouselPrev">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+
+        <button class="carousel-nav next" id="carouselNext">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+
+        <div class="carousel-dots" id="carouselDots">
+            <div class="carousel-dot active" data-index="0"></div>
+            <div class="carousel-dot" data-index="1"></div>
+            <div class="carousel-dot" data-index="2"></div>
+            <div class="carousel-dot" data-index="3"></div>
+        </div>
+
+        <div class="carousel-progress" id="carouselProgress"></div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16 fade-up">
+                <span class="section-label">Por que a Haife</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
+                    Não vendemos serviços.<br>
+                    Entregamos <span class="text-gradient">resultados</span>.
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card p-8 fade-up stagger-1">
+                    <div class="card-icon mb-6">
+                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Estratégia Personalizada</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Cada marca é única. Criamos planos sob medida alinhados aos seus objetivos e ao seu público.
+                    </p>
+                </div>
+
+                <div class="card p-8 fade-up stagger-2">
+                    <div class="card-icon mb-6">
+                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Execução de Impacto</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Conteúdo profissional que prende atenção, engaja e converte seguidores em clientes reais.
+                    </p>
+                </div>
+
+                <div class="card p-8 fade-up stagger-3">
+                    <div class="card-icon mb-6">
+                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Resultados Mensuráveis</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Acompanhamento completo com relatórios claros e métricas de performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pacotes" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="section-label">Soluções</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
+                    Pacotes para cada <span class="text-gradient">necessidade</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-card text-center fade-up stagger-1">
+                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-[--dark] mb-2">Gestão de Stories</h4>
+                    <p class="text-sm text-gray-500">Conteúdos interativos e estratégicos que engajam</p>
+                </div>
+
+                <div class="service-card text-center fade-up stagger-2">
+                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-[--dark] mb-2">Fotografia</h4>
+                    <p class="text-sm text-gray-500">Edição profissional com tratamento de imagens</p>
+                </div>
+
+                <div class="service-card text-center fade-up stagger-3">
+                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-[--dark] mb-2">Filmagens</h4>
+                    <p class="text-sm text-gray-500">Vídeos de 30-60s para Reels e TikTok</p>
+                </div>
+
+                <div class="service-card text-center featured fade-up stagger-4">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+                        <span class="bg-gradient-primary text-white text-xs font-semibold px-3 py-1 rounded-full">Mais Popular</span>
+                    </div>
+                    <div class="w-12 h-12 mx-auto bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold text-[--dark] mb-2">Gestão Completa</h4>
+                    <p class="text-sm text-gray-500">A solução completa para suas redes sociais</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16 fade-up">
+                <span class="section-label">Portfólio</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
+                    Nosso trabalho<br>fala por si
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="portfolio-item fade-up stagger-1">
+                    <img src="imagens/notebook.jpeg"
+                         alt="Projeto de portfólio 1"
+                         class="w-full h-80 object-cover"/>
+                    <div class="portfolio-overlay">
+                        <div>
+                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Branding & Social</p>
+                            <p class="text-white font-semibold">Marca Premium</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-up stagger-2">
+                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1472&auto=format&fit=crop"
+                         alt="Projeto de portfólio 2"
+                         class="w-full h-80 object-cover"/>
+                    <div class="portfolio-overlay">
+                        <div>
+                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Content Strategy</p>
+                            <p class="text-white font-semibold">Restaurante Top</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item fade-up stagger-3">
+                    <img src="https://i.pinimg.com/736x/6a/2a/02/6a2a028b78fc1b9f89d2299c9ae58d4b.jpg"
+                         alt="Projeto de portfólio 3"
+                         class="w-full h-80 object-cover"/>
+                    <div class="portfolio-overlay">
+                        <div>
+                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Social Media</p>
+                            <p class="text-white font-semibold">E-commerce de Sucesso</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="avaliacoes" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mb-16 fade-up">
+                <span class="section-label">Depoimentos</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
+                    O que nossos<br>clientes dizem
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Fernanda" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-[--dark]">Fernanda Costa</p>
+                            <p class="text-xs text-gray-500">Dono de cafeteria</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        "Tinha zero noção de como mexer com instagram. A equipe da Haife cuidou de tudo, desde as fotos do meu café até os stories. Minha clientela dobrou em 3 meses, acredita? Recomendo demais."
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rafael" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-[--dark]">Rafael Oliveira</p>
+                            <p class="text-xs text-gray-500">E-commerce de roupas</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        "Já contratei outras agências mas nada se compara. O reel que fizeram pra mim viralizou e eu não acreditei. Vendas subiram muito. Só troco se fecharem."
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-3">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Lucas" class="w-12 h-12 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-[--dark]">Lucas Souza</p>
+                            <p class="text-xs text-gray-500">Consultor financeiro</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-0.5 mb-3">
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        "Sou da área corporativa, achei que ia ser difícil encontrar alguém que entendesse meu público. Bateu na trave no primeiro mês mas depois agarrou o jeito. Hoje o pessoal me reconhece mais."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-[--dark]">
+        <div class="max-w-4xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <span class="section-label" style="color: var(--gray-400);">Contato</span>
+                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    Pronto para <span class="text-gradient">transformar</span> sua marca?
+                </h2>
+                <p class="mt-4 text-gray-400 max-w-lg mx-auto">
+                    Preencha seus dados e receba um diagnóstico gratuito do seu Instagram no WhatsApp.
                 </p>
-                <div class="mt-8 flex gap-4">
-                    <a href="#pacotes"
-                       class="bg-[--primary] text-white px-8 py-3 rounded-lg font-bold shadow-lg hover:scale-105 transform transition">
-                        Ver Pacotes
-                    </a>
-                    <a href="#portfolio"
-                       class="bg-white text-[--primary] px-8 py-3 rounded-lg font-bold border border-gray-200 hover:bg-gray-50 transition">
-                        Ver Trabalhos
-                    </a>
+            </div>
+
+            <form id="contact-form" class="bg-white/5 backdrop-blur-sm p-8 md:p-12 rounded-2xl border border-white/10 fade-up">
+                <div class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Seu Nome</label>
+                        <input type="text" id="name" class="input-field"
+                               placeholder="Nome e Sobrenome" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">O que você precisa?</label>
+                        <textarea id="message" rows="4" class="input-field resize-none"
+                                  placeholder="Conte-nos sobre seu negócio e objetivos..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-[#25D366] text-white font-semibold py-4 rounded-xl hover:bg-[#20bd5a] transition flex items-center justify-center gap-3">
+                        <img src="imagens/whatsapp.png" alt="WhatsApp" class="w-6 h-6">
+                        <span>Enviar pelo WhatsApp</span>
+                    </button>
                 </div>
-            </div>
-            <div class="animate-on-scroll flex justify-center">
-                <img src="imagens/rhaiane-profile.jpeg" alt="Rhaiane, social media da Haife Media"
-                     class="rounded-2xl shadow-2xl w-full max-w-md object-cover"/>
-            </div>
-        </div>
-    </section>
-
-    <section id="pacotes" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center animate-on-scroll">
-                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Nossos Pacotes &
-                    Serviços</h2>
-                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Soluções para cada
-                    necessidade</p>
-            </div>
-
-            <div class="mt-16 animate-on-scroll">
-                <h3 class="text-2xl font-bold text-center text-[--dark] mb-8">Pacotes com Preço Fixo</h3>
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
-                        <i data-lucide="package" class="text-[--primary]"></i>
-                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Pacote Criativos</h4>
-                        <p class="text-sm text-gray-500 mt-1">Até 10 artes personalizadas (posts estáticos).</p>
-                        <p class="text-3xl font-black text-[--primary] my-4">R$ 450,00</p>
-                        <a href="#contato"
-                           class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero
-                            esse!</a>
-                    </div>
-                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
-                        <i data-lucide="gallery-horizontal-end" class="text-[--primary]"></i>
-                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Carrossel Estratégico</h4>
-                        <p class="text-sm text-gray-500 mt-1">Sequência de até 5 imagens com storytelling.</p>
-                        <p class="text-3xl font-black text-[--primary] my-4">R$ 250,00</p>
-                        <a href="#contato"
-                           class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero
-                            esse!</a>
-                    </div>
-                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
-                        <i data-lucide="contact" class="text-[--primary]"></i>
-                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Cartão de Visita</h4>
-                        <p class="text-sm text-gray-500 mt-1">Design exclusivo, digital ou para impressão.</p>
-                        <p class="text-3xl font-black text-[--primary] my-4">R$ 70,00</p>
-                        <a href="#contato"
-                           class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero
-                            esse!</a>
-                    </div>
-                    <div class="p-8 bg-gray-50 rounded-2xl shadow-sm border border-gray-200 flex flex-col items-center text-center hover:shadow-lg transition">
-                        <i data-lucide="image" class="text-[--primary]"></i>
-                        <h4 class="mt-4 text-lg font-bold text-[--dark]">Banner Digital</h4>
-                        <p class="text-sm text-gray-500 mt-1">Arte em alta qualidade para campanhas e anúncios.</p>
-                        <p class="text-3xl font-black text-[--primary] my-4">R$ 150,00</p>
-                        <a href="#contato"
-                           class="mt-auto w-full text-center bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition">Quero
-                            esse!</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-20 pt-12 border-t border-gray-200 animate-on-scroll">
-                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
-                        <i data-lucide="instagram" class="text-[--primary] mb-3"></i>
-                        <h4 class="font-bold text-[--dark]">Gestão de Stories</h4>
-                        <p class="text-xs text-gray-500 mt-1">Conteúdos interativos e estratégicos.</p>
-                        <p class="mt-2 font-semibold text-gray-700">A partir de <span
-                                class="text-[--primary] font-bold">R$ 350/mês</span></p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
-                        <i data-lucide="camera" class="text-[--primary] mb-3"></i>
-                        <h4 class="font-bold text-[--dark]">Fotografia Móvel</h4>
-                        <p class="text-xs text-gray-500 mt-1">Incluso edição e tratamento de imagens.</p>
-                        <p class="mt-2 font-semibold text-gray-700">A partir de <span
-                                class="text-[--primary] font-bold">R$ 400</span></p>
-                    </div>
-                    <div class="p-6 bg-gray-50 rounded-2xl text-center flex flex-col items-center">
-                        <i data-lucide="clapperboard" class="text-[--primary] mb-3"></i>
-                        <h4 class="font-bold text-[--dark]">Vídeos Comerciais</h4>
-                        <p class="text-xs text-gray-500 mt-1">Vídeos de 30-60s para Reels e TikTok.</p>
-                        <p class="mt-2 font-semibold text-gray-700">A partir de <span
-                                class="text-[--primary] font-bold">R$ 200</span></p>
-                    </div>
-                    <div class="p-6 bg-white rounded-2xl text-center ring-2 ring-[--primary] shadow-lg flex flex-col items-center">
-                        <i data-lucide="sparkles" class="text-[--primary] mb-3"></i>
-                        <h4 class="font-bold text-[--dark]">Gestão Completa</h4>
-                        <p class="text-xs text-gray-500 mt-1">A solução completa para suas redes sociais.</p>
-                        <p class="mt-2 font-semibold text-gray-700">A partir de <span
-                                class="text-[--primary] font-bold">R$ 850</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--    <section id="planos" class="py-20">-->
-    <!--        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">-->
-    <!--            <div class="text-center animate-on-scroll">-->
-    <!--                <h2 class="text-base font-semibold text-[&#45;&#45;primary] tracking-wide uppercase">Calculadora Interativa</h2>-->
-    <!--                <p class="mt-2 text-3xl font-extrabold text-[&#45;&#45;dark] tracking-tight sm:text-4xl">Ou monte um plano avulso</p>-->
-    <!--                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Selecione os serviços e a quantidade que desejar. O orçamento é calculado na hora!</p>-->
-    <!--            </div>-->
-
-    <!--            <div class="mt-12 lg:grid lg:grid-cols-3 lg:gap-8 items-start">-->
-    <!--                <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-on-scroll" id="service-list">-->
-
-    <!--                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Posts para Feed" data-price="100">-->
-    <!--                        <h4 class="text-lg font-bold text-[&#45;&#45;dark]">Posts para Feed</h4>-->
-    <!--                        <p class="text-sm text-gray-500 mt-1">Artes estáticas ou carrosséis.</p>-->
-    <!--                        <p class="text-2xl font-black text-[&#45;&#45;primary] my-3">R$ 100 <span class="text-sm font-medium text-gray-500">/unid</span></p>-->
-    <!--                        <div class="flex items-center gap-2">-->
-    <!--                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>-->
-    <!--                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>-->
-    <!--                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-
-    <!--                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Sequências de Stories" data-price="80">-->
-    <!--                        <h4 class="text-lg font-bold text-[&#45;&#45;dark]">Sequências de Stories</h4>-->
-    <!--                        <p class="text-sm text-gray-500 mt-1">Pacote com 3 a 5 stories.</p>-->
-    <!--                        <p class="text-2xl font-black text-[&#45;&#45;primary] my-3">R$ 80 <span class="text-sm font-medium text-gray-500">/seq</span></p>-->
-    <!--                        <div class="flex items-center gap-2">-->
-    <!--                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>-->
-    <!--                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>-->
-    <!--                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-
-    <!--                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Vídeo Reel (30-60s)" data-price="250">-->
-    <!--                        <h4 class="text-lg font-bold text-[&#45;&#45;dark]">Vídeo Reel (30-60s)</h4>-->
-    <!--                        <p class="text-sm text-gray-500 mt-1">Roteiro, captação e edição.</p>-->
-    <!--                        <p class="text-2xl font-black text-[&#45;&#45;primary] my-3">R$ 250 <span class="text-sm font-medium text-gray-500">/unid</span></p>-->
-    <!--                        <div class="flex items-center gap-2">-->
-    <!--                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>-->
-    <!--                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>-->
-    <!--                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-
-    <!--                    <div class="service-item bg-white p-6 rounded-xl shadow-md border border-gray-200" data-service-name="Fotografia de Produtos" data-price="500">-->
-    <!--                        <h4 class="text-lg font-bold text-[&#45;&#45;dark]">Fotografia de Produtos</h4>-->
-    <!--                        <p class="text-sm text-gray-500 mt-1">Sessão para 10 produtos.</p>-->
-    <!--                        <p class="text-2xl font-black text-[&#45;&#45;primary] my-3">R$ 500 <span class="text-sm font-medium text-gray-500">/sessão</span></p>-->
-    <!--                        <div class="flex items-center gap-2">-->
-    <!--                            <button class="quantity-btn minus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">-</button>-->
-    <!--                            <input type="number" value="0" min="0" class="quantity-input w-16 text-center font-bold text-lg bg-transparent" readonly>-->
-    <!--                            <button class="quantity-btn plus bg-gray-200 text-gray-700 w-8 h-8 rounded-full font-bold text-lg hover:bg-gray-300 transition">+</button>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-
-    <!--                <div class="mt-10 lg:mt-0 lg:sticky top-24 animate-on-scroll">-->
-    <!--                    <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-200">-->
-    <!--                        <h3 class="text-xl font-bold text-center text-[&#45;&#45;dark]">Resumo do seu Plano</h3>-->
-    <!--                        <div id="summary-items" class="mt-6 space-y-3 text-sm min-h-[80px]">-->
-    <!--                            <p id="empty-cart-message" class="text-gray-500 text-center py-6">Selecione os serviços que você deseja.</p>-->
-    <!--                        </div>-->
-    <!--                        <div class="border-t border-gray-200 mt-6 pt-4">-->
-    <!--                            <div class="flex justify-between items-center">-->
-    <!--                                <span class="text-base font-medium text-gray-600">Total Mensal Estimado:</span>-->
-    <!--                                <span id="total-price" class="text-2xl font-black text-[&#45;&#45;dark]">R$ 0,00</span>-->
-    <!--                            </div>-->
-    <!--                        </div>-->
-    <!--                        <a href="#contato" class="block w-full text-center bg-[&#45;&#45;primary] text-white mt-6 py-3 rounded-lg font-bold hover:bg-opacity-90 transition shadow">-->
-    <!--                            Solicitar Orçamento-->
-    <!--                        </a>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </section>-->
-
-    <section id="portfolio" class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center animate-on-scroll">
-                <h2 class="text-base font-semibold text-[--primary] tracking-wide uppercase">Cases de Sucesso</h2>
-                <p class="mt-2 text-3xl font-extrabold text-[--dark] tracking-tight sm:text-4xl">Nosso trabalho fala por
-                    nós</p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 animate-on-scroll">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1470&auto=format&fit=crop"
-                     alt="Projeto de portfólio 1"
-                     class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-                <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1472&auto=format&fit=crop"
-                     alt="Projeto de portfólio 2"
-                     class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-                <img src="https://i.pinimg.com/736x/6a/2a/02/6a2a028b78fc1b9f89d2299c9ae58d4b.jpg"
-                     alt="Projeto de portfólio 3"
-                     class="rounded-xl shadow-lg object-cover w-full h-72 transition-transform duration-300 hover:scale-105">
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="py-20 bg-gradient-to-br from-[--primary] to-[--secondary]">
-        <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll">
-            <h2 class="text-3xl font-extrabold text-center text-white drop-shadow-md">Vamos fechar negócio?</h2>
-            <p class="text-center text-white/90 mt-2">Preencha seus dados, confirme o plano e envie para nós no
-                WhatsApp!</p>
-            <form id="contact-form" class="mt-8 bg-white p-8 rounded-2xl shadow-2xl space-y-6">
-                <div>
-                    <label for="name" class="font-semibold block mb-2 text-gray-700">Seu Nome</label>
-                    <input type="text" id="name"
-                           class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition"
-                           placeholder="Nome e Sobrenome" required>
-                </div>
-                <div>
-                    <label for="message" class="font-semibold block mb-2 text-gray-700">Mensagem Adicional
-                        (Opcional)</label>
-                    <textarea id="message" rows="3"
-                              class="w-full border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[--primary] transition"
-                              placeholder="Algo mais que gostaria de nos dizer?"></textarea>
-                </div>
-                <button type="submit"
-                        class="relative bg-green-500 w-full text-white font-bold py-3.5 rounded-lg hover:bg-green-600 transition shadow-lg flex items-center justify-center gap-2">
-                    <img src="imagens/whatsapp.png" alt="WhatsApp Icon" class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10">
-                    <span>Enviar pelo WhatsApp</span>
-                </button>
             </form>
+
+            <div class="mt-12 flex flex-wrap justify-center gap-12 text-center fade-up">
+                <div>
+                    <p class="text-gray-500 text-sm">Horário</p>
+                    <p class="text-white font-medium">Seg - Sex: 9h às 18h</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm">Resposta</p>
+                    <p class="text-white font-medium">Em até 2 horas</p>
+                </div>
+                <div>
+                    <p class="text-gray-500 text-sm">Consultoria</p>
+                    <p class="text-white font-medium">100% gratuita</p>
+                </div>
+            </div>
         </div>
     </section>
 </main>
 
-<footer class="bg-gray-800 text-white">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
-        <p class="text-2xl font-bold">Haife Media</p>
-        <p class="mt-4 text-base text-gray-400">&copy; 2025 Haife Media. Todos os direitos reservados.</p>
-        <div class="mt-6 flex justify-center space-x-6">
-            <a href="https://facebook.com/haifemedia" class="text-gray-400 hover:text-white">
-                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C6.477 0 2 4.477 2 10c0 4.991 3.657 9.128 8.438 9.878V13.01H7.896V10.03h2.542V7.712c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10.03h2.773l-.443 2.98h-2.33V19.878C18.343 19.128 22 14.991 22 10C22 4.477 17.523 0 12 0z"/>
-                </svg>
-            </a>
+<footer class="bg-[--dark] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="imagens/favicon.png" alt="Haife Media" class="h-8 w-auto opacity-80">
+                <span class="font-semibold text-white opacity-80">Haife Media</span>
+            </div>
 
-            <a href="https://instagram.com/haifemedia" class="text-gray-400 hover:text-white">
-                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                          d="M12 0C8.74 0 8.333.014 7.053.072c-1.355.063-2.356.28-3.234.614C2.81 1.01 2.193 1.454 1.64 2.007c-.553.553-.997 1.17-1.332 2.049-.335.879-.552 1.88-.615 3.235C.014 8.333 0 8.74 0 12s.014 3.667.072 4.947c.063 1.355.28 2.356.614 3.234.335.879.779 1.496 1.332 2.049.553.553 1.17 1.002 2.049 1.332.879.335 1.88.552 3.235.615C8.333 23.986 8.74 24 12 24s3.667-.014 4.947-.072c1.355-.063 2.356-.28 3.234-.614.879-.335 1.496-.779 2.049-1.332.553-.553.997-1.17 1.332-2.049.335-.879.552-1.88.615-3.235.058-1.355.072-1.762.072-4.947s-.014-3.667-.072-4.947c-.063-1.355-.28-2.356-.614-3.234C22.2 1.454 21.583 1.01 21.03 0.457A7.323 7.323 0 0019.006.122c-.879-.335-1.88-.552-3.235-.615C15.667.014 15.26 0 12 0zm0 2.163c3.204 0 3.584.012 4.85.071 1.17.055 1.849.202 2.228.342.428.163.743.376 1.085.718.342.342.556.657.718 1.085.14.379.287 1.059.342 2.228.06 1.266.071 1.646.071 4.85s-.011 3.584-.071 4.85c-.055 1.17-.202 1.849-.342 2.228-.163.428-.376.743-.718 1.085-.342.342-.657.556-1.085.718-.379.14-1.059.287-2.228.342-1.266.06-1.646.071-4.85.071s-3.584-.011-4.85-.071c-1.17-.055-1.849-.202-2.228-.342-.428-.163-.743-.376-1.085-.718-.342-.342-.556-.657-.718-1.085-.14-.379-.287-1.059-.342-2.228-.06-1.266-.071-1.646-.071-4.85s.011-3.584.071-4.85c.055-1.17.202-1.849.342-2.228.163-.428.376-.743.718-1.085.342-.342.657-.556 1.085-.718.379-.14 1.059-.287 2.228-.342C8.416 2.175 8.824 2.163 12 2.163zm0 3.488c-3.111 0-5.635 2.525-5.635 5.635 0 3.111 2.525 5.635 5.635 5.635 3.111 0 5.635-2.525 5.635-5.635 0-3.111-2.525-5.635-5.635-5.635zm0 9.208c-1.976 0-3.573-1.597-3.573-3.573 0-1.976 1.597-3.573 3.573-3.573s3.573 1.597 3.573 3.573c0 1.976-1.597 3.573-3.573 3.573zM21.285 4.544a1.06 1.06 0 01-1.061 1.061 1.06 1.06 0 01-1.06-1.061 1.06 1.06 0 011.06-1.06h.001a1.06 1.06 0 011.061 1.06z"
-                          clip-rule="evenodd"/>
-                </svg>
-            </a>
+            <div class="flex items-center gap-4">
+                <a href="https://instagram.com/haifemedia" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </a>
+                <a href="https://facebook.com/haifemedia" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0C6.477 0 2 4.477 2 10c0 4.991 3.657 9.128 8.438 9.878V13.01H7.896V10.03h2.542V7.712c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10.03h2.773l-.443 2.98h-2.33V19.878C18.343 19.128 22 14.991 22 10C22 4.477 17.523 0 12 0z"/>
+                    </svg>
+                </a>
+            </div>
 
-            <a href="#" class="text-gray-400 hover:text-white">
-                <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd"
-                          d="M12 2C6.477 2 2 6.477 2 12c0 4.237 2.636 7.855 6.356 9.312-.062-.772-.034-1.684.192-2.492.203-.728.996-4.218.996-4.218s-.279-.557-.279-1.383c0-1.3 1.002-2.267 2.245-2.267.972 0 1.427.724 1.427 1.603 0 .976-.627 2.431-.951 3.787-.266 1.127.565 2.046 1.699 2.046 2.029 0 3.58-2.122 3.58-5.22 0-2.734-1.958-4.661-4.99-4.661-3.398 0-5.383 2.548-5.383 5.072 0 .991.371 2.063.834 2.656.095.121.111.215.082.332-.033.14-.111.465-.143.582-.036.126-.188.182-.332.121-1.299-.51-2.115-1.996-2.115-3.527 0-2.885 2.094-5.592 6.151-5.592 3.225 0 5.768 2.28 5.768 5.045 0 3.09-1.846 5.564-4.411 5.564-1.258 0-2.433-.655-2.84-1.428-.158.625-.544 2.158-.693 2.73-.252.993-.997 1.848-1.527 2.535C9.373 21.699 10.655 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"
-                          clip-rule="evenodd"></path>
-                </svg>
-            </a>
-
+            <p class="text-gray-500 text-sm">&copy; 2025 Haife Media</p>
         </div>
     </div>
 </footer>
 
-<a id="whatsapp-float-button" href="#"
-   class="whatsapp-float fixed bottom-6 right-6 z-40 bg-[#25D366] text-white w-16 h-16 rounded-full flex items-center justify-center shadow-lg transform hover:scale-110 transition-transform duration-300">
-    <img src="imagens/whatsapp.png" alt="WhatsApp Icon" class="w-16 h-16">
+<a id="whatsapp-float-button" href="#" target="_blank"
+   class="whatsapp-float">
+    <img src="imagens/whatsapp.png" alt="WhatsApp">
 </a>
 
 <script>
-    lucide.createIcons();
-
     document.addEventListener('DOMContentLoaded', () => {
         const whatsappNumber = "5547992170977";
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const header = document.getElementById('header');
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(12px)';
+                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
+            } else {
+                header.style.background = 'transparent';
+                header.style.backdropFilter = 'none';
+                header.style.boxShadow = 'none';
+            }
+        });
+
         const floatBtn = document.getElementById('whatsapp-float-button');
-        const floatMessage = encodeURIComponent('Oii! Vi no site da Haife Media e gostaria de mais informações ✨');
+        const floatMessage = encodeURIComponent('Oii! Vi no site da Haife Media e gostaria de mais informações');
         floatBtn.href = `https://wa.me/${whatsappNumber}?text=${floatMessage}`;
 
-        // (Restante do JavaScript continua igual...)
-        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        // Hero Carousel
+        const carouselTrack = document.getElementById('carouselTrack');
+        const carouselPrev = document.getElementById('carouselPrev');
+        const carouselNext = document.getElementById('carouselNext');
+        const carouselDots = document.querySelectorAll('.carousel-dot');
+        const carouselProgress = document.getElementById('carouselProgress');
+        const slides = document.querySelectorAll('.carousel-slide');
+        
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let autoplayInterval;
+        let progressInterval;
+        let isHovering = false;
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            
+            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            carouselDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+            
+            resetProgress();
+        }
+        
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        function startAutoplay() {
+            const interval = 5000;
+            let progress = 0;
+            
+            progressInterval = setInterval(() => {
+                if (!isHovering) {
+                    progress += 100 / (interval / 50);
+                    carouselProgress.style.width = `${progress}%`;
+                    
+                    if (progress >= 100) {
+                        progress = 0;
+                        carouselProgress.style.width = '0%';
+                        nextSlide();
+                    }
+                }
+            }, 50);
+        }
+        
+        function resetProgress() {
+            carouselProgress.style.width = '0%';
+        }
+        
+        carouselPrev.addEventListener('click', () => {
+            prevSlide();
+            resetProgress();
+        });
+        
+        carouselNext.addEventListener('click', () => {
+            nextSlide();
+            resetProgress();
+        });
+        
+        carouselDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                goToSlide(parseInt(dot.dataset.index));
+                resetProgress();
+            });
+        });
+        
+        const carousel = document.querySelector('.hero-carousel');
+        carousel.addEventListener('mouseenter', () => { isHovering = true; });
+        carousel.addEventListener('mouseleave', () => { isHovering = false; });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        carousel.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) nextSlide();
+            if (touchEndX - touchStartX > 50) prevSlide();
+        }, { passive: true });
+        
+        startAutoplay();
+
+        const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, {threshold: 0.1});
-        animatedElements.forEach(el => observer.observe(el));
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-        const serviceItems = document.querySelectorAll('.service-item');
-        const summaryItemsContainer = document.getElementById('summary-items');
-        const totalPriceEl = document.getElementById('total-price');
-        const emptyCartMessage = document.getElementById('empty-cart-message');
+        fadeElements.forEach(el => observer.observe(el));
+
         const contactForm = document.getElementById('contact-form');
-
-        const formatCurrency = (value) => {
-            return value.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
-        };
-
-        const updateCalculator = () => {
-            let totalPrice = 0;
-            let summaryHTML = '';
-
-            serviceItems.forEach(item => {
-                const name = item.dataset.serviceName;
-                const price = parseFloat(item.dataset.price);
-                const quantity = parseInt(item.querySelector('.quantity-input').value);
-
-                if (quantity > 0) {
-                    const itemTotal = price * quantity;
-                    totalPrice += itemTotal;
-                    summaryHTML += `
-              <div class="flex justify-between items-center text-gray-700">
-                <span>${name} (x${quantity})</span>
-                <span class="font-semibold">${formatCurrency(itemTotal)}</span>
-              </div>
-            `;
-                }
-            });
-
-            emptyCartMessage.style.display = summaryHTML === '' ? 'block' : 'none';
-            summaryItemsContainer.innerHTML = summaryHTML || emptyCartMessage.outerHTML;
-            totalPriceEl.textContent = formatCurrency(totalPrice);
-        };
-
-        serviceItems.forEach(item => {
-            const plusBtn = item.querySelector('.plus');
-            const minusBtn = item.querySelector('.minus');
-            const input = item.querySelector('.quantity-input');
-
-            plusBtn.addEventListener('click', () => {
-                input.value = parseInt(input.value) + 1;
-                updateCalculator();
-                gtag('event', 'add_service', {'event_category': 'Calculator', 'event_label': item.dataset.serviceName});
-            });
-
-            minusBtn.addEventListener('click', () => {
-                let currentValue = parseInt(input.value);
-                if (currentValue > 0) {
-                    input.value = currentValue - 1;
-                    updateCalculator();
-                    gtag('event', 'remove_service', {
-                        'event_category': 'Calculator',
-                        'event_label': item.dataset.serviceName
-                    });
-                }
-            });
-        });
-
-        const generatePlanSummaryText = () => {
-            let planText = "";
-            let totalPrice = 0;
-
-            serviceItems.forEach(item => {
-                const name = item.dataset.serviceName;
-                const price = parseFloat(item.dataset.price);
-                const quantity = parseInt(item.querySelector('.quantity-input').value);
-
-                if (quantity > 0) {
-                    totalPrice += price * quantity;
-                    planText += `- ${name}: ${quantity} unid.\n`;
-                }
-            });
-
-            if (planText === "") {
-                return "Nenhum plano foi montado na calculadora. Gostaria de um orçamento personalizado.";
-            }
-
-            return `*Plano Montado na Calculadora:*\n${planText}\n*Total Estimado: ${formatCurrency(totalPrice)}*`;
-        };
-
         contactForm.addEventListener('submit', (event) => {
             event.preventDefault();
             const clientName = document.getElementById('name').value;
             const clientMessage = document.getElementById('message').value;
-            const planSummary = generatePlanSummaryText();
 
             let message = `Olá, Haife Media! 👋\n\nMeu nome é *${clientName}*.\n\nGostaria de solicitar um orçamento.`;
 
-            if (planSummary.includes("Nenhum plano")) {
-                message += `\n\n*Mensagem:*\n${clientMessage || 'Gostaria de saber mais sobre seus pacotes.'}`;
-            } else {
-                message += `\n\n${planSummary}`;
-                if (clientMessage.trim() !== '') {
-                    message += `\n\n*Mensagem adicional:*\n${clientMessage}`;
-                }
+            if (clientMessage.trim() !== '') {
+                message += `\n\n*Mensagem:*\n${clientMessage}`;
             }
 
             message += `\n\n---\nEnviado via site.`;
@@ -587,8 +1205,6 @@
             window.open(whatsappUrl, '_blank');
             gtag('event', 'submit_form', {'event_category': 'Contact', 'event_label': 'WhatsApp Form Submission'});
         });
-
-        updateCalculator();
     });
 </script>
 </body>
