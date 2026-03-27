@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Haife Media | Transformamos sua Presença Online</title>
+    <title>Haife Media | Transformamos sua Presença Digital</title>
 
-    <meta property="og:title" content="Haife Media | Transformamos sua Presença Online">
+    <meta property="og:title" content="Haife Media | Transformamos sua Presença Digital">
     <meta property="og:description" content="Da estratégia criativa à gestão completa do seu Instagram. Ajudamos marcas a se conectarem com seu público e a crescerem de forma autêntica e impactante.">
     <meta property="og:image" content="https://haifemedia.com.br/imagens/og-image.png">
     <meta property="og:url" content="https://haifemedia.com.br">
     <meta property="og:type" content="website">
 
+    <meta name="description" content="Haife Media - Agência de Marketing Digital especializada em gestão de redes sociais, conteúdo profissional e crescimento estratégico para marcas.">
+    <meta name="theme-color" content="#6366f1">
+
     <link rel="icon" type="image/png" href="imagens/favicon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -20,1192 +29,971 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --primary: #3bb3b2;
-            --primary-light: #5ccbc9;
-            --primary-dark: #2a8f8e;
-            --secondary: #6acee0;
-            --dark: #0f172a;
-            --dark-soft: #1e293b;
-            --gray-50: #f8fafc;
-            --gray-100: #f1f5f9;
-            --gray-200: #e2e8f0;
-            --gray-300: #cbd5e1;
-            --gray-400: #94a3b8;
-            --gray-500: #64748b;
-            --gray-600: #475569;
-            --gray-700: #334155;
-            --gray-800: #1e293b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--gray-50);
-            color: var(--gray-800);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
-        }
-
-        ::selection {
-            background: var(--primary);
-            color: white;
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .bg-gradient-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .btn-primary {
-            background: var(--dark);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px -12px rgba(59, 179, 178, 0.35);
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--dark);
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 15px;
-            border: 1.5px solid var(--gray-200);
-            transition: all 0.3s ease;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--dark);
-            background: var(--dark);
-            color: white;
-        }
-
-        .nav-link {
-            color: var(--gray-600);
-            font-weight: 500;
-            font-size: 14px;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--dark);
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .stagger-1 { transition-delay: 0.1s; }
-        .stagger-2 { transition-delay: 0.2s; }
-        .stagger-3 { transition-delay: 0.3s; }
-        .stagger-4 { transition-delay: 0.4s; }
-
-        .card {
-            background: white;
-            border-radius: 16px;
-            border: 1px solid var(--gray-100);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover {
-            border-color: var(--gray-200);
-            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-50);
-            transition: all 0.3s ease;
-        }
-
-        .card:hover .card-icon {
-            background: var(--primary);
-        }
-
-        .card:hover .card-icon svg {
-            color: white;
-        }
-
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-        }
-
-        .portfolio-item img {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 24px;
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .service-card {
-            background: white;
-            border-radius: 20px;
-            padding: 32px;
-            border: 1px solid var(--gray-100);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        .service-card.featured {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 179, 178, 0.1);
-        }
-
-        .service-card:hover {
-            border-color: var(--gray-200);
-            box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.08);
-            transform: translateY(-4px);
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            line-height: 1;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--gray-600) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .input-field {
-            width: 100%;
-            padding: 16px 20px;
-            border: 1.5px solid var(--gray-200);
-            border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 179, 178, 0.1);
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 32px;
-            right: 32px;
-            z-index: 50;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
-        }
-
-        .whatsapp-float img {
-            width: 32px;
-            height: 32px;
-        }
-
-        .section-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gray-500);
-        }
-
-        .section-label::before {
-            content: '';
-            width: 24px;
-            height: 2px;
-            background: var(--primary);
-            border-radius: 1px;
-        }
-
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gray-200), transparent);
-        }
-
-        /* Hero Carousel */
-        .hero-carousel {
-            position: relative;
-            height: 85vh;
-            min-height: 600px;
-            overflow: hidden;
-            background: var(--dark);
-        }
-
-        .carousel-track {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .carousel-slide {
-            position: relative;
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .carousel-slide img {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.6;
-        }
-
-        .carousel-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.4) 100%);
-        }
-
-        .carousel-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            max-width: 800px;
-            padding: 0 24px;
-        }
-
-        .carousel-tag {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(59, 179, 178, 0.2);
-            border: 1px solid rgba(59, 179, 178, 0.4);
-            border-radius: 100px;
-            color: var(--secondary);
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .carousel-title {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            color: white;
-            line-height: 1.1;
-            margin-bottom: 16px;
-            letter-spacing: -1px;
-        }
-
-        .carousel-subtitle {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .carousel-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 32px;
-            padding: 16px 36px;
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            font-size: 15px;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(59, 179, 178, 0.4);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 20;
-            width: 56px;
-            height: 56px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: white;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .carousel-nav.prev { left: 32px; }
-        .carousel-nav.next { right: 32px; }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 20;
-            display: flex;
-            gap: 12px;
-        }
-
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-dot.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        .carousel-dot:hover {
-            background: rgba(255, 255, 255, 0.6);
-        }
-
-        .carousel-progress {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 3px;
-            background: var(--primary);
-            z-index: 20;
-            transition: width 0.1s linear;
-        }
-
-        @media (max-width: 768px) {
-            .hero-carousel {
-                height: 70vh;
-                min-height: 500px;
-            }
-
-            .carousel-nav {
-                width: 44px;
-                height: 44px;
-            }
-
-            .carousel-nav.prev { left: 16px; }
-            .carousel-nav.next { right: 16px; }
-
-            .carousel-dots {
-                bottom: 24px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 56px;
-                height: 56px;
-            }
-
-            .whatsapp-float img {
-                width: 28px;
-                height: 28px;
-            }
-        }
-    </style>
 </head>
 <body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
 
-<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" id="header">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <a href="#" class="flex items-center gap-3">
-                <img src="imagens/favicon.png" alt="Haife Media" class="h-9 w-auto">
-                <span class="font-bold text-xl text-[--dark]">Haife Media</span>
+    <div class="loading-screen">
+        <div class="loader">
+            <div class="loader-logo">
+                <img src="imagens/favicon.png" alt="Haife Media" class="loader-img">
+            </div>
+            <span class="loader-text">Haife Media</span>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-progress"></div>
+
+    <div class="floating-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="imagens/favicon.png" alt="Haife Media" class="logo-img">
+                <span class="logo-text">Haife Media</span>
             </a>
 
-            <nav class="hidden md:flex items-center gap-10">
-                <a href="#pacotes" class="nav-link">Pacotes</a>
+            <nav class="nav-desktop">
+                <a href="#servicos" class="nav-link">Serviços</a>
                 <a href="#portfolio" class="nav-link">Portfólio</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
 
-            <a href="#contato" class="btn-primary hidden md:inline-flex">
-                <span>Começar Agora</span>
+            <a href="#contato" class="btn-magnetic">
+                <span class="btn-inner">
+                    <span class="btn-text">Começar Agora</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </span>
             </a>
 
-            <button id="menu-btn" class="md:hidden p-2 -mr-2">
-                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
+                <span class="menu-line"></span>
             </button>
         </div>
-    </div>
+    </header>
 
-    <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-100">
-        <div class="px-6 py-6 space-y-4">
-            <a href="#pacotes" class="block text-gray-700 font-medium py-2">Pacotes</a>
-            <a href="#portfolio" class="block text-gray-700 font-medium py-2">Portfólio</a>
-            <a href="#contato" class="block text-gray-700 font-medium py-2">Contato</a>
-            <a href="#contato" class="block btn-primary text-center mt-4">Começar Agora</a>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <nav class="mobile-nav">
+                <a href="#servicos" class="mobile-nav-link" data-text="Serviços">
+                    <span class="mobile-nav-number">01</span>
+                    <span class="mobile-nav-text">Serviços</span>
+                </a>
+                <a href="#portfolio" class="mobile-nav-link" data-text="Portfólio">
+                    <span class="mobile-nav-number">02</span>
+                    <span class="mobile-nav-text">Portfólio</span>
+                </a>
+                <a href="#depoimentos" class="mobile-nav-link" data-text="Depoimentos">
+                    <span class="mobile-nav-number">03</span>
+                    <span class="mobile-nav-text">Depoimentos</span>
+                </a>
+                <a href="#contato" class="mobile-nav-link" data-text="Contato">
+                    <span class="mobile-nav-number">04</span>
+                    <span class="mobile-nav-text">Contato</span>
+                </a>
+            </nav>
+            <div class="mobile-menu-footer">
+                <a href="#contato" class="btn-primary-magnetic">
+                    <span>Falar com Especialista</span>
+                </a>
+            </div>
         </div>
     </div>
-</header>
 
-<main>
-    <section class="min-h-screen flex items-center pt-20 pb-24 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-white via-gray-50 to-white"></div>
-        <div class="absolute top-1/4 right-0 w-[600px] h-[600px] bg-gradient-to-br from-[#3bb3b2]/5 to-[#6acee0]/5 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-1/4 left-0 w-[400px] h-[400px] bg-gradient-to-tr from-[#3bb3b2]/5 to-transparent rounded-full blur-3xl"></div>
+    <main>
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <div class="hero-gradient"></div>
+                <div class="hero-grid"></div>
+            </div>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                <div>
-                    <div class="fade-up stagger-1">
-                        <span class="section-label">Transformação Digital</span>
+            <div class="hero-content">
+                    <div class="hero-badge" data-animate="fade-up">
+                    <span class="badge-dot"></span>
+                    <span class="badge-text">Gestão de Redes Sociais</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line" data-animate="fade-up" data-delay="100">
+                        <span class="title-word">Sua marca merecendo</span>
+                    </span>
+                    <span class="title-line" data-animate="fade-up" data-delay="200">
+                        <span class="title-word">atenção de verdade</span>
+                    </span>
+                    <span class="title-line" data-animate="fade-up" data-delay="300">
+                        <span class="title-gradient title-word">no Instagram</span>
+                    </span>
+                </h1>
+
+                <div class="hero-description" data-animate="fade-up" data-delay="400">
+                    <p class="desc-line">
+                        Ajudamos <strong>empresários e marcas</strong> a construírem uma presença digital 
+                        <strong>autêntica, estratégica e que gera resultados</strong>.
+                    </p>
+                    <p class="desc-line">
+                        De posts a Reels, gerimos sua rede com <span class="text-highlight">excelência e foco em conversão</span>.
+                    </p>
+                </div>
+
+                <div class="hero-cta" data-animate="fade-up" data-delay="500">
+                    <a href="#contato" class="btn-primary-magnetic btn-large">
+                        <span class="btn-inner">
+                            <span class="btn-text">Falar com Especialista</span>
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="#portfolio" class="btn-ghost">
+                        <span>Ver Trabalhos</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-container" data-animate="fade-up" data-delay="200">
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-glow"></div>
+                        <img src="imagens/rhaiane-profile.jpeg" alt="Rhaiane, social media da Haife Media" class="hero-image"/>
+                        <div class="hero-image-reflection"></div>
                     </div>
 
-                    <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-[--dark] leading-[1.1] tracking-tight fade-up stagger-2">
-                        Correria e Marketing<br>
-                        <span class="text-gradient">sem estratégia?</span>
-                    </h1>
+                    <div class="floating-card card-1" data-animate="float" data-delay="0">
+                        <div class="floating-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <div class="floating-card-content">
+                            <span class="floating-card-value">+300%</span>
+                            <span class="floating-card-label">engajamento</span>
+                        </div>
+                    </div>
 
-                    <p class="mt-8 text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg fade-up stagger-3">
-                        Se você é <strong class="text-gray-900">empreendedor</strong> ou um profissional em busca de uma 
-                        <strong class="text-gray-900">agência parceira e confiável</strong>, está no lugar certo.
-                    </p>
+                    <div class="floating-card card-2" data-animate="float" data-delay="200">
+                        <div class="floating-card-icon success">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                        <div class="floating-card-content">
+                            <span class="floating-card-value">98%</span>
+                            <span class="floating-card-label">satisfação</span>
+                        </div>
+                    </div>
 
-                    <p class="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg fade-up stagger-3">
-                        Vamos te ajudar a <span class="text-gradient font-semibold">crescer seu negócio de forma estratégica</span>.
-                    </p>
+                    <div class="floating-card card-3" data-animate="float" data-delay="400">
+                        <div class="floating-card-icon accent">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                            </svg>
+                        </div>
+                        <div class="floating-card-content">
+                            <span class="floating-card-value">5.0</span>
+                            <span class="floating-card-label">avaliação</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="mt-10 flex flex-wrap items-center gap-4 fade-up stagger-4">
-                        <a href="#contato" class="btn-primary">
-                            <span>Falar com Especialista</span>
-                        </a>
-                        <a href="#portfolio" class="btn-outline">
-                            Ver Trabalhos
-                        </a>
+            <div class="hero-stats" data-animate="fade-up" data-delay="600">
+                <div class="stat-item">
+                    <span class="stat-number" data-count="98">0</span>
+                    <span class="stat-suffix">%</span>
+                    <span class="stat-label">Taxa de satisfação</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="150">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Marcas atendidas</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-count="3">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">Anos de experiência</span>
+                </div>
+            </div>
+
+            <div class="scroll-indicator" data-animate="fade-up" data-delay="800">
+                <div class="scroll-line"></div>
+                <span class="scroll-text">Scroll</span>
+            </div>
+        </section>
+
+        <section class="marquee-section">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span class="marquee-item">Social Media</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Fotografia</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Videomarketing</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Branding</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Estratégia Digital</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Gestão de Conteúdo</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Reels & TikTok</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Stories</span>
+                    <span class="marquee-separator">◆</span>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <span class="marquee-item">Social Media</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Fotografia</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Videomarketing</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Branding</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Estratégia Digital</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Gestão de Conteúdo</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Reels & TikTok</span>
+                    <span class="marquee-separator">◆</span>
+                    <span class="marquee-item">Stories</span>
+                    <span class="marquee-separator">◆</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="showcase" id="showcase">
+            <div class="showcase-bg">
+                <div class="showcase-gradient"></div>
+            </div>
+
+            <div class="showcase-header">
+                <div class="section-label" data-animate="fade-up">
+                    <span class="label-number">01</span>
+                    <span class="label-text">Serviços</span>
+                </div>
+                <h2 class="section-title" data-animate="fade-up" data-delay="100">
+                    O que fazemos para <br/><span class="title-gradient">transformar sua marca</span>
+                </h2>
+            </div>
+
+            <div class="showcase-carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide" data-slide="0">
+                        <div class="slide-bg">
+                            <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=90&w=1920" alt="Gestão de Redes"/>
+                        </div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-badge">
+                                <span class="badge-pulse"></span>
+                                Estratégia Completa
+                            </div>
+                            <h3 class="slide-title">Presença digital que converte</h3>
+                            <p class="slide-description">Criamos uma estratégia sob medida para sua marca se destacar e atrair clientes todos os dias.</p>
+                            <a href="#contato" class="slide-cta">
+                                <span>Quero minha marca no topo</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide" data-slide="1">
+                        <div class="slide-bg">
+                            <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=90&w=1920" alt="Conteúdo Profissional"/>
+                        </div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-badge">
+                                <span class="badge-pulse"></span>
+                                Conteúdo Premium
+                            </div>
+                            <h3 class="slide-title">Produção audiovisual de alto impacto</h3>
+                            <p class="slide-description">Fotografia profissional, Reels cinematográficos e vídeos que capturam atenção e engajam.</p>
+                            <a href="#servicos" class="slide-cta">
+                                <span>Ver detalhes</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide" data-slide="2">
+                        <div class="slide-bg">
+                            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=90&w=1920" alt="Estratégia Digital"/>
+                        </div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-badge">
+                                <span class="badge-pulse"></span>
+                                Análise & Métricas
+                            </div>
+                            <h3 class="slide-title">Resultados mensuráveis e reais</h3>
+                            <p class="slide-description">Acompanhe cada crescimento com relatórios detalhados e métricas que importam para seu negócio.</p>
+                            <a href="#contato" class="slide-cta">
+                                <span>Quero resultados reais</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide" data-slide="3">
+                        <div class="slide-bg">
+                            <img src="https://images.unsplash.com/photo-1561070791-36c11767b26a?q=90&w=1920" alt="Branding"/>
+                        </div>
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <div class="slide-badge">
+                                <span class="badge-pulse"></span>
+                                Identidade Visual
+                            </div>
+                            <h3 class="slide-title">Uma identidade que se destaca</h3>
+                            <p class="slide-description">Construímos uma presença visual consistente que comunica autoridade e profissionalismo.</p>
+                            <a href="#contato" class="slide-cta">
+                                <span>Começar projeto</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="relative fade-up">
-                    <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#3bb3b2]/10 to-[#6acee0]/10 rounded-3xl transform rotate-3"></div>
-                        <img src="imagens/rhaiane-profile.jpeg" alt="Rhaiane, social media da Haife Media"
-                             class="relative rounded-2xl shadow-2xl w-full"/>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev" id="carouselPrev">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots">
+                        <span class="dot active" data-index="0"></span>
+                        <span class="dot" data-index="1"></span>
+                        <span class="dot" data-index="2"></span>
+                        <span class="dot" data-index="3"></span>
+                    </div>
+                    <button class="carousel-btn next" id="carouselNext">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
 
-                        <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-lg border border-gray-100">
-                            <div class="flex items-center gap-3">
-                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
+                <div class="carousel-progress">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us" id="why-us">
+            <div class="why-us-bg">
+                <div class="why-us-gradient"></div>
+            </div>
+
+            <div class="why-us-header">
+                <div class="section-label" data-animate="fade-up">
+                    <span class="label-number">02</span>
+                    <span class="label-text">Por que a Haife</span>
+                </div>
+                <h2 class="section-title" data-animate="fade-up" data-delay="100">
+                    Por que escolher a <br/><span class="title-gradient">Haife Media</span>?
+                </h2>
+            </div>
+
+            <div class="why-us-grid">
+                <div class="why-card" data-animate="fade-up" data-delay="0">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <div class="why-card-number">01</div>
+                    <h3 class="why-card-title">Estratégia Sob Medida</h3>
+                    <p class="why-card-description">Não acreditamos em fórmulas genéricas. Cada marca recebe um plano personalizado alinhado aos seus objetivos específicos.</p>
+                    <div class="why-card-features">
+                        <span class="feature-tag">Análise profunda</span>
+                        <span class="feature-tag">Planejamento editorial</span>
+                        <span class="feature-tag">Calendário estratégico</span>
+                    </div>
+                </div>
+
+                <div class="why-card featured" data-animate="fade-up" data-delay="100">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <div class="why-card-number">02</div>
+                    <h3 class="why-card-title">Execução de Excelência</h3>
+                    <p class="why-card-description">Conteúdo que não é só bonito — é estratégico. Fotografia, vídeos e textos pensados para engajar e converter.</p>
+                    <div class="why-card-features">
+                        <span class="feature-tag">Fotografia profissional</span>
+                        <span class="feature-tag">Vídeos cinematográficos</span>
+                        <span class="feature-tag">Copywriting persuasivo</span>
+                    </div>
+                </div>
+
+                <div class="why-card" data-animate="fade-up" data-delay="200">
+                    <div class="why-card-glow"></div>
+                    <div class="why-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                        </svg>
+                    </div>
+                    <div class="why-card-number">03</div>
+                    <h3 class="why-card-title">Resultados Comprovados</h3>
+                    <p class="why-card-description">Relatórios transparentes e métricas reais. Você acompanha cada crescimento do seu perfil.</p>
+                    <div class="why-card-features">
+                        <span class="feature-tag">Relatórios mensais</span>
+                        <span class="feature-tag">KPIs transparentes</span>
+                        <span class="feature-tag">Suporte contínuo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services" id="servicos">
+            <div class="services-header">
+                <div class="section-label" data-animate="fade-up">
+                    <span class="label-number">03</span>
+                    <span class="label-text">Pacotes</span>
+                </div>
+                <h2 class="section-title" data-animate="fade-up" data-delay="100">
+                    Nossas <span class="title-gradient">soluções</span> para você
+                </h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card" data-animate="fade-up" data-delay="0">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <path d="M21 15l-5-5L5 21"/>
+                            </svg>
+                        </div>
+                        <span class="service-tag">Stories</span>
+                    </div>
+                    <h3 class="service-title">Gestão de Stories</h3>
+                    <p class="service-description">Stories estratégicos que engajam, humanizam sua marca e aproximam você do seu público.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Design profissional</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Enquetes e interações</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>CTAs para conversão</span>
+                        </li>
+                    </ul>
+                    <a href="#contato" class="service-cta">Quero saber mais</a>
+                </div>
+
+                <div class="service-card" data-animate="fade-up" data-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <span class="service-tag">Fotografia</span>
+                    </div>
+                    <h3 class="service-title">Fotografia Profissional</h3>
+                    <p class="service-description">Imagens que capturam a essência da sua marca e elevam a percepção do seu negócio.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Retoque e tratamento</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Presets exclusivos</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Alta resolução</span>
+                        </li>
+                    </ul>
+                    <a href="#contato" class="service-cta">Quero saber mais</a>
+                </div>
+
+                <div class="service-card" data-animate="fade-up" data-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <span class="service-tag">Videografia</span>
+                    </div>
+                    <h3 class="service-title">Vídeos para Reels</h3>
+                    <p class="service-description">Conteúdo em vídeo que prende a atenção e viraliza, atraindo novos seguidores todos os dias.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Roteiro e filmagem</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Legendagem completa</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Trilha sonora</span>
+                        </li>
+                    </ul>
+                    <a href="#contato" class="service-cta">Quero saber mais</a>
+                </div>
+
+                <div class="service-card featured" data-animate="fade-up" data-delay="300">
+                    <div class="featured-badge">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        <span>Mais Escolhido</span>
+                    </div>
+                    <div class="service-card-header">
+                        <div class="service-icon gradient">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                            </svg>
+                        </div>
+                        <span class="service-tag gradient">Completo</span>
+                    </div>
+                    <h3 class="service-title">Gestão Completa</h3>
+                    <p class="service-description">A solução definitiva: cuidamos de toda sua presença digital enquanto você foca no que faz de melhor.</p>
+                    <ul class="service-features">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Posts + Stories + Reels</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Gestão de comentários</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Relatórios mensais</span>
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span>Suporte prioritário</span>
+                        </li>
+                    </ul>
+                    <a href="#contato" class="service-cta primary">Falar com Especialista</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="portfolio" id="portfolio">
+            <div class="portfolio-header">
+                <div class="section-label" data-animate="fade-up">
+                    <span class="label-number">04</span>
+                    <span class="label-text">Portfólio</span>
+                </div>
+                <h2 class="section-title" data-animate="fade-up" data-delay="100">
+                    Cases de <span class="title-gradient">sucesso</span> reais
+                </h2>
+            </div>
+
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-animate="fade-up" data-delay="0">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=90&w=1920" alt="Projeto de portfólio - Marca Premium" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Branding & Social</span>
+                            <h3 class="portfolio-title">Marca Premium</h3>
+                            <p class="portfolio-description">Rebranding completo com estratégia de conteúdo para Instagram.</p>
+                            <div class="portfolio-stats">
+                                <div class="portfolio-stat">
+                                    <span class="stat-value">+180%</span>
+                                    <span class="stat-label">Engajamento</span>
                                 </div>
-                                <div>
-                                    <p class="font-semibold text-sm text-gray-900">+300%</p>
-                                    <p class="text-xs text-gray-500">engajamento médio</p>
+                                <div class="portfolio-stat">
+                                    <span class="stat-value">+2.5k</span>
+                                    <span class="stat-label">Novos seguidores</span>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-animate="fade-up" data-delay="100">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=90&w=1920" alt="Projeto de portfólio - Restaurante Top" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Content Strategy</span>
+                            <h3 class="portfolio-title">Restaurante Top</h3>
+                            <p class="portfolio-description">Gestão completa com foco em food photography.</p>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-animate="fade-up" data-delay="200">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=90&w=1920" alt="Projeto de portfólio - E-commerce de Sucesso" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Social Media</span>
+                            <h3 class="portfolio-title">E-commerce de Sucesso</h3>
+                            <p class="portfolio-description">Estratégia de vendas para e-commerce de moda.</p>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-animate="fade-up" data-delay="0">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=90&w=1920" alt="Projeto de portfólio - Beleza Premium" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Beauty & Lifestyle</span>
+                            <h3 class="portfolio-title">Beleza Premium</h3>
+                            <p class="portfolio-description">Gestão completa para marca de cosméticos naturais.</p>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-animate="fade-up" data-delay="100">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=90&w=1920" alt="Projeto de portfólio - Gastronomia Urbana" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Food & Beverage</span>
+                            <h3 class="portfolio-title">Gastronomia Urbana</h3>
+                            <p class="portfolio-description">Conteúdo gastronômico que atraiu clientes todos os dias.</p>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-animate="fade-up" data-delay="200">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=90&w=1920" alt="Projeto de portfólio - Tech Startup" loading="lazy"/>
+                    </div>
+                    <div class="portfolio-overlay">
+                        <div class="portfolio-content">
+                            <span class="portfolio-category">Tech & Innovation</span>
+                            <h3 class="portfolio-title">Tech Startup</h3>
+                            <p class="portfolio-description">Posicionamento digital para app de delivery.</p>
+                        </div>
+                        <div class="portfolio-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials" id="depoimentos">
+            <div class="testimonials-bg">
+                <div class="testimonials-gradient"></div>
+            </div>
+
+            <div class="testimonials-header">
+                <div class="section-label" data-animate="fade-up">
+                    <span class="label-number">05</span>
+                    <span class="label-text">Depoimentos</span>
+                </div>
+                <h2 class="section-title" data-animate="fade-up" data-delay="100">
+                    Quem contrata, <span class="title-gradient">recomenda</span>
+                </h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-animate="fade-up" data-delay="0">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Tinha zero noção de como mexer com instagram. A equipe da Haife cuidou de tudo, desde as fotos do meu café até os stories. Minha clientela dobrou em 3 meses, acredita? Recomendo demais."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Fernanda Costa" loading="lazy"/>
+                        </div>
+                        <div class="author-info">
+                            <span class="author-name">Fernanda Costa</span>
+                            <span class="author-role">Dono de cafeteria</span>
+                        </div>
+                        <div class="author-quote">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card featured" data-animate="fade-up" data-delay="100">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Já contratei outras agências mas nada se compara. O reel que fizeram pra mim viralizou e eu não acreditei. Vendas subiram muito. Só troco se fecharem."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rafael Oliveira" loading="lazy"/>
+                        </div>
+                        <div class="author-info">
+                            <span class="author-name">Rafael Oliveira</span>
+                            <span class="author-role">E-commerce de roupas</span>
+                        </div>
+                        <div class="author-quote">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+                    <div class="testimonial-rating">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <blockquote class="testimonial-text">
+                        "Sou da área corporativa, achei que ia ser difícil encontrar alguém que entendesse meu público. Bateu na trave no primeiro mês mas depois agarrou o jeito. Hoje o pessoal me reconhece mais."
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Lucas Souza" loading="lazy"/>
+                        </div>
+                        <div class="author-info">
+                            <span class="author-name">Lucas Souza</span>
+                            <span class="author-role">Consultor financeiro</span>
+                        </div>
+                        <div class="author-quote">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contato">
+            <div class="contact-bg">
+                <div class="contact-gradient"></div>
+                <div class="contact-orb"></div>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info" data-animate="fade-up">
+                    <div class="section-label light">
+                        <span class="label-number">06</span>
+                        <span class="label-text">Contato</span>
+                    </div>
+                    <h2 class="contact-title">
+                        Vamos construir algo <span class="title-gradient">incrível</span> juntos?
+                    </h2>
+                    <p class="contact-description">
+                        Envie uma mensagem e receba uma análise gratuita do seu Instagram diretamente no WhatsApp.
+                    </p>
+
+                    <div class="contact-features">
+                        <div class="contact-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <span class="feature-title">Horário</span>
+                                <span class="feature-value">Seg - Sex: 9h às 18h</span>
+                            </div>
+                        </div>
+                        <div class="contact-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <span class="feature-title">Resposta</span>
+                                <span class="feature-value">Em até 2 horas</span>
+                            </div>
+                        </div>
+                        <div class="contact-feature">
+                            <div class="feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                            </div>
+                            <div class="feature-content">
+                                <span class="feature-title">Consultoria</span>
+                                <span class="feature-value">100% gratuita</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-20 pt-16 border-t border-gray-100">
-                <div class="grid grid-cols-3 gap-8 md:gap-16">
-                    <div class="text-center fade-up stagger-1">
-                        <p class="stat-number">98%</p>
-                        <p class="mt-2 text-sm text-gray-500 font-medium">Taxa de satisfação</p>
-                    </div>
-                    <div class="text-center fade-up stagger-2">
-                        <p class="stat-number">+150</p>
-                        <p class="mt-2 text-sm text-gray-500 font-medium">Marcas atendidas</p>
-                    </div>
-                    <div class="text-center fade-up stagger-3">
-                        <p class="stat-number">3+</p>
-                        <p class="mt-2 text-sm text-gray-500 font-medium">Anos de experiência</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Hero Carousel -->
-    <section id="showcase" class="hero-carousel">
-        <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1920&q=80" alt="Dashboard de métricas">
-                <div class="carousel-overlay"></div>
-                <div class="carousel-content">
-                    <span class="carousel-tag">Gestão de Redes</span>
-                    <h2 class="carousel-title">Transforme seguidores em clientes</h2>
-                    <p class="carousel-subtitle">Estratégias que conectam sua marca ao público certo, no momento certo.</p>
-                    <a href="#contato" class="carousel-btn">
-                        Quero resultados assim
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1920&q=80" alt="Conteúdo para Instagram">
-                <div class="carousel-overlay"></div>
-                <div class="carousel-content">
-                    <span class="carousel-tag">Conteúdo Profissional</span>
-                    <h2 class="carousel-title">Fotos e vídeos que impactam</h2>
-                    <p class="carousel-subtitle">Produção audiovisual completa para sua marca se destacar no feed e nos stories.</p>
-                    <a href="#pacotes" class="carousel-btn">
-                        Ver pacotes
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80" alt="Estratégia digital">
-                <div class="carousel-overlay"></div>
-                <div class="carousel-content">
-                    <span class="carousel-tag">Estratégia Digital</span>
-                    <h2 class="carousel-title">Dados que guiam decisões</h2>
-                    <p class="carousel-subtitle">Relatórios claros e métricas de performance para você acompanhar o crescimento.</p>
-                    <a href="#contato" class="carousel-btn">
-                        Começar hoje
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="carousel-slide">
-                <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1920&q=80" alt="Branding">
-                <div class="carousel-overlay"></div>
-                <div class="carousel-content">
-                    <span class="carousel-tag">Branding & Identidade</span>
-                    <h2 class="carousel-title">Uma marca que comunica</h2>
-                    <p class="carousel-subtitle">Design consistente que transmite os valores do seu negócio em cada publicação.</p>
-                    <a href="#contato" class="carousel-btn">
-                        Vamos conversar
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <button class="carousel-nav prev" id="carouselPrev">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-            </svg>
-        </button>
-
-        <button class="carousel-nav next" id="carouselNext">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-        </button>
-
-        <div class="carousel-dots" id="carouselDots">
-            <div class="carousel-dot active" data-index="0"></div>
-            <div class="carousel-dot" data-index="1"></div>
-            <div class="carousel-dot" data-index="2"></div>
-            <div class="carousel-dot" data-index="3"></div>
-        </div>
-
-        <div class="carousel-progress" id="carouselProgress"></div>
-    </section>
-
-    <section class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-2xl mb-16 fade-up">
-                <span class="section-label">Por que a Haife</span>
-                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
-                    Não vendemos serviços.<br>
-                    Entregamos <span class="text-gradient">resultados</span>.
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card p-8 fade-up stagger-1">
-                    <div class="card-icon mb-6">
-                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Estratégia Personalizada</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Cada marca é única. Criamos planos sob medida alinhados aos seus objetivos e ao seu público.
-                    </p>
-                </div>
-
-                <div class="card p-8 fade-up stagger-2">
-                    <div class="card-icon mb-6">
-                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Execução de Impacto</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Conteúdo profissional que prende atenção, engaja e converte seguidores em clientes reais.
-                    </p>
-                </div>
-
-                <div class="card p-8 fade-up stagger-3">
-                    <div class="card-icon mb-6">
-                        <svg class="w-5 h-5 text-[#3bb3b2]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[--dark] mb-3">Resultados Mensuráveis</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Acompanhamento completo com relatórios claros e métricas de performance.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pacotes" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <span class="section-label">Soluções</span>
-                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
-                    Pacotes para cada <span class="text-gradient">necessidade</span>
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="service-card text-center fade-up stagger-1">
-                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-semibold text-[--dark] mb-2">Gestão de Stories</h4>
-                    <p class="text-sm text-gray-500">Conteúdos interativos e estratégicos que engajam</p>
-                </div>
-
-                <div class="service-card text-center fade-up stagger-2">
-                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-semibold text-[--dark] mb-2">Fotografia</h4>
-                    <p class="text-sm text-gray-500">Edição profissional com tratamento de imagens</p>
-                </div>
-
-                <div class="service-card text-center fade-up stagger-3">
-                    <div class="w-12 h-12 mx-auto bg-gray-100 rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-semibold text-[--dark] mb-2">Filmagens</h4>
-                    <p class="text-sm text-gray-500">Vídeos de 30-60s para Reels e TikTok</p>
-                </div>
-
-                <div class="service-card text-center featured fade-up stagger-4">
-                    <div class="absolute -top-3 left-1/2 -translate-x-1/2">
-                        <span class="bg-gradient-primary text-white text-xs font-semibold px-3 py-1 rounded-full">Mais Popular</span>
-                    </div>
-                    <div class="w-12 h-12 mx-auto bg-gradient-primary rounded-xl flex items-center justify-center mb-5">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="font-semibold text-[--dark] mb-2">Gestão Completa</h4>
-                    <p class="text-sm text-gray-500">A solução completa para suas redes sociais</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-2xl mb-16 fade-up">
-                <span class="section-label">Portfólio</span>
-                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
-                    Nosso trabalho<br>fala por si
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="portfolio-item fade-up stagger-1">
-                    <img src="imagens/notebook.jpeg"
-                         alt="Projeto de portfólio 1"
-                         class="w-full h-80 object-cover"/>
-                    <div class="portfolio-overlay">
-                        <div>
-                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Branding & Social</p>
-                            <p class="text-white font-semibold">Marca Premium</p>
+                <div class="contact-form-wrapper" data-animate="fade-up" data-delay="100">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Seu Nome</label>
+                            <input type="text" id="name" class="form-input" placeholder="Nome e Sobrenome" required>
+                            <div class="input-border"></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-up stagger-2">
-                    <img src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=1472&auto=format&fit=crop"
-                         alt="Projeto de portfólio 2"
-                         class="w-full h-80 object-cover"/>
-                    <div class="portfolio-overlay">
-                        <div>
-                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Content Strategy</p>
-                            <p class="text-white font-semibold">Restaurante Top</p>
+                        <div class="form-group">
+                            <label for="message" class="form-label">O que você precisa?</label>
+                            <textarea id="message" class="form-input form-textarea" placeholder="Conte-nos sobre seu negócio e objetivos..."></textarea>
+                            <div class="input-border"></div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-item fade-up stagger-3">
-                    <img src="https://i.pinimg.com/736x/6a/2a/02/6a2a028b78fc1b9f89d2299c9ae58d4b.jpg"
-                         alt="Projeto de portfólio 3"
-                         class="w-full h-80 object-cover"/>
-                    <div class="portfolio-overlay">
-                        <div>
-                            <p class="text-[#6acee0] text-xs font-semibold uppercase tracking-wider mb-1">Social Media</p>
-                            <p class="text-white font-semibold">E-commerce de Sucesso</p>
-                        </div>
-                    </div>
+                        <button type="submit" class="form-submit">
+                            <span class="submit-text">Enviar pelo WhatsApp</span>
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="avaliacoes" class="py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="max-w-2xl mb-16 fade-up">
-                <span class="section-label">Depoimentos</span>
-                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-[--dark] tracking-tight">
-                    O que nossos<br>clientes dizem
-                </h2>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="imagens/favicon.png" alt="Haife Media" class="logo-img">
+                    <span class="logo-text">Haife Media</span>
+                </a>
+                <p class="footer-tagline">Transformando presenças digitais em resultados reais.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-1">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Fernanda" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-semibold text-[--dark]">Fernanda Costa</p>
-                            <p class="text-xs text-gray-500">Dono de cafeteria</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-0.5 mb-3">
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "Tinha zero noção de como mexer com instagram. A equipe da Haife cuidou de tudo, desde as fotos do meu café até os stories. Minha clientela dobrou em 3 meses, acredita? Recomendo demais."
-                    </p>
-                </div>
+            <nav class="footer-nav">
+                <a href="#servicos">Serviços</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Contato</a>
+            </nav>
 
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-2">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Rafael" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-semibold text-[--dark]">Rafael Oliveira</p>
-                            <p class="text-xs text-gray-500">E-commerce de roupas</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-0.5 mb-3">
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "Já contratei outras agências mas nada se compara. O reel que fizeram pra mim viralizou e eu não acreditei. Vendas subiram muito. Só troco se fecharem."
-                    </p>
-                </div>
-
-                <div class="bg-white p-6 rounded-2xl border border-gray-100 fade-up stagger-3">
-                    <div class="flex items-center gap-3 mb-4">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Lucas" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <p class="font-semibold text-[--dark]">Lucas Souza</p>
-                            <p class="text-xs text-gray-500">Consultor financeiro</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-0.5 mb-3">
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                        <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-                    </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        "Sou da área corporativa, achei que ia ser difícil encontrar alguém que entendesse meu público. Bateu na trave no primeiro mês mas depois agarrou o jeito. Hoje o pessoal me reconhece mais."
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contato" class="py-24 bg-[--dark]">
-        <div class="max-w-4xl mx-auto px-6 lg:px-8">
-            <div class="text-center mb-12 fade-up">
-                <span class="section-label" style="color: var(--gray-400);">Contato</span>
-                <h2 class="mt-4 text-3xl md:text-4xl font-bold text-white tracking-tight">
-                    Pronto para <span class="text-gradient">transformar</span> sua marca?
-                </h2>
-                <p class="mt-4 text-gray-400 max-w-lg mx-auto">
-                    Preencha seus dados e receba um diagnóstico gratuito do seu Instagram no WhatsApp.
-                </p>
-            </div>
-
-            <form id="contact-form" class="bg-white/5 backdrop-blur-sm p-8 md:p-12 rounded-2xl border border-white/10 fade-up">
-                <div class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Seu Nome</label>
-                        <input type="text" id="name" class="input-field"
-                               placeholder="Nome e Sobrenome" required>
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">O que você precisa?</label>
-                        <textarea id="message" rows="4" class="input-field resize-none"
-                                  placeholder="Conte-nos sobre seu negócio e objetivos..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-[#25D366] text-white font-semibold py-4 rounded-xl hover:bg-[#20bd5a] transition flex items-center justify-center gap-3">
-                        <img src="imagens/whatsapp.png" alt="WhatsApp" class="w-6 h-6">
-                        <span>Enviar pelo WhatsApp</span>
-                    </button>
-                </div>
-            </form>
-
-            <div class="mt-12 flex flex-wrap justify-center gap-12 text-center fade-up">
-                <div>
-                    <p class="text-gray-500 text-sm">Horário</p>
-                    <p class="text-white font-medium">Seg - Sex: 9h às 18h</p>
-                </div>
-                <div>
-                    <p class="text-gray-500 text-sm">Resposta</p>
-                    <p class="text-white font-medium">Em até 2 horas</p>
-                </div>
-                <div>
-                    <p class="text-gray-500 text-sm">Consultoria</p>
-                    <p class="text-white font-medium">100% gratuita</p>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="bg-[--dark] border-t border-white/5 py-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <img src="imagens/favicon.png" alt="Haife Media" class="h-8 w-auto opacity-80">
-                <span class="font-semibold text-white opacity-80">Haife Media</span>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="https://instagram.com/haifemedia" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <div class="footer-social">
+                <a href="https://instagram.com/haifemedia" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
-                <a href="https://facebook.com/haifemedia" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <a href="https://facebook.com/haifemedia" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 0C6.477 0 2 4.477 2 10c0 4.991 3.657 9.128 8.438 9.878V13.01H7.896V10.03h2.542V7.712c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10.03h2.773l-.443 2.98h-2.33V19.878C18.343 19.128 22 14.991 22 10C22 4.477 17.523 0 12 0z"/>
                     </svg>
                 </a>
             </div>
-
-            <p class="text-gray-500 text-sm">&copy; 2025 Haife Media</p>
         </div>
-    </div>
-</footer>
 
-<a id="whatsapp-float-button" href="#" target="_blank"
-   class="whatsapp-float">
-    <img src="imagens/whatsapp.png" alt="WhatsApp">
-</a>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Haife Media. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const whatsappNumber = "5547992170977";
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const header = document.getElementById('header');
+    <a href="#" id="whatsappFloat" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <div class="whatsapp-pulse"></div>
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(12px)';
-                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
-            } else {
-                header.style.background = 'transparent';
-                header.style.backdropFilter = 'none';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        const floatBtn = document.getElementById('whatsapp-float-button');
-        const floatMessage = encodeURIComponent('Oii! Vi no site da Haife Media e gostaria de mais informações');
-        floatBtn.href = `https://wa.me/${whatsappNumber}?text=${floatMessage}`;
-
-        // Hero Carousel
-        const carouselTrack = document.getElementById('carouselTrack');
-        const carouselPrev = document.getElementById('carouselPrev');
-        const carouselNext = document.getElementById('carouselNext');
-        const carouselDots = document.querySelectorAll('.carousel-dot');
-        const carouselProgress = document.getElementById('carouselProgress');
-        const slides = document.querySelectorAll('.carousel-slide');
-        
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        let autoplayInterval;
-        let progressInterval;
-        let isHovering = false;
-        
-        function goToSlide(index) {
-            currentSlide = index;
-            if (currentSlide < 0) currentSlide = totalSlides - 1;
-            if (currentSlide >= totalSlides) currentSlide = 0;
-            
-            carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            carouselDots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
-            
-            resetProgress();
-        }
-        
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-        
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-        
-        function startAutoplay() {
-            const interval = 5000;
-            let progress = 0;
-            
-            progressInterval = setInterval(() => {
-                if (!isHovering) {
-                    progress += 100 / (interval / 50);
-                    carouselProgress.style.width = `${progress}%`;
-                    
-                    if (progress >= 100) {
-                        progress = 0;
-                        carouselProgress.style.width = '0%';
-                        nextSlide();
-                    }
-                }
-            }, 50);
-        }
-        
-        function resetProgress() {
-            carouselProgress.style.width = '0%';
-        }
-        
-        carouselPrev.addEventListener('click', () => {
-            prevSlide();
-            resetProgress();
-        });
-        
-        carouselNext.addEventListener('click', () => {
-            nextSlide();
-            resetProgress();
-        });
-        
-        carouselDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                goToSlide(parseInt(dot.dataset.index));
-                resetProgress();
-            });
-        });
-        
-        const carousel = document.querySelector('.hero-carousel');
-        carousel.addEventListener('mouseenter', () => { isHovering = true; });
-        carousel.addEventListener('mouseleave', () => { isHovering = false; });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') prevSlide();
-            if (e.key === 'ArrowRight') nextSlide();
-        });
-        
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        carousel.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        
-        carousel.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 50) nextSlide();
-            if (touchEndX - touchStartX > 50) prevSlide();
-        }, { passive: true });
-        
-        startAutoplay();
-
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-        fadeElements.forEach(el => observer.observe(el));
-
-        const contactForm = document.getElementById('contact-form');
-        contactForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const clientName = document.getElementById('name').value;
-            const clientMessage = document.getElementById('message').value;
-
-            let message = `Olá, Haife Media! 👋\n\nMeu nome é *${clientName}*.\n\nGostaria de solicitar um orçamento.`;
-
-            if (clientMessage.trim() !== '') {
-                message += `\n\n*Mensagem:*\n${clientMessage}`;
-            }
-
-            message += `\n\n---\nEnviado via site.`;
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            gtag('event', 'submit_form', {'event_category': 'Contact', 'event_label': 'WhatsApp Form Submission'});
-        });
-    });
-</script>
+    <script src="main.js"></script>
 </body>
 </html>
