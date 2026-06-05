@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria de Diagnóstico para empreendedoras da área de beleza e estética</title>
+    <meta name="description" content="Consultoria de Diagnóstico gratuita para empreendedoras da área de beleza e estética. Descubra o próximo passo para o seu negócio.">
+    <meta name="theme-color" content="#3bb3b2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf9f7;
+            --card: #ffffff;
+            --text: #1d1d1f;
+            --text-secondary: #6b6b6b;
+            --text-muted: #999999;
+            --accent: #3bb3b2;
+            --accent-hover: #2d9e9d;
+            --accent-light: rgba(59, 179, 178, 0.08);
+            --accent-glow: rgba(59, 179, 178, 0.25);
+            --border: #e5e5e5;
+            --success: #3bb3b2;
+            --error: #dc3545;
+            --transition: cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 16px;
+            --shadow: 0 1px 2px rgba(0,0,0,0.04), 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(59, 179, 178, 0.05) 0%, transparent 60%),
+            radial-gradient(ellipse at 80% 50%, rgba(59, 179, 178, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Welcome */
+        .welcome {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            z-index: 100;
+            transition: opacity 0.8s var(--transition), visibility 0.8s;
+            padding: 2rem;
+        }
+
+        .welcome.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent-light);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--transition) 0.2s forwards;
+        }
+
+        .welcome-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            text-align: center;
+            max-width: 600px;
+            margin-bottom: 1.25rem;
+            line-height: 1.15;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--transition) 0.4s forwards;
+        }
+
+        .welcome-title span {
+            color: var(--accent);
+        }
+
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 480px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--transition) 0.6s forwards;
+        }
+
+        .welcome-btn {
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s var(--transition) 0.8s forwards;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .welcome-btn:hover {
+            background: var(--accent-hover);
+            transform: scale(1.05) translateY(0);
+            box-shadow: 0 12px 40px var(--accent-glow);
+        }
+
+        .welcome-btn:active {
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Form Container */
+        .form-container {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.6s var(--transition);
+        }
+
+        .form-container.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        /* Header */
+        .form-header {
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .form-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.3px;
+        }
+
+        .form-brand span {
+            color: var(--accent);
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.4s var(--transition);
+        }
+
+        .progress-dot.active {
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent-glow);
+            transform: scale(1.2);
+        }
+
+        .progress-dot.completed {
+            background: var(--accent);
+            opacity: 0.5;
+        }
+
+        .progress-bar-container {
+            height: 3px;
+            background: var(--border);
+            position: fixed;
+            top: 61px;
+            left: 0;
+            right: 0;
+            z-index: 49;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-hover), var(--accent));
+            width: 0%;
+            transition: width 0.5s var(--transition);
+        }
+
+        /* Main */
+        .form-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Step */
+        .step {
+            display: none;
+            width: 100%;
+            max-width: 560px;
+        }
+
+        .step.active {
+            display: flex;
+            flex-direction: column;
+            animation: stepIn 0.4s var(--transition);
+        }
+
+        @keyframes stepIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-number {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .step-question {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        /* Input */
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-wrapper input,
+        .input-wrapper textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            font-size: 1rem;
+            font-family: inherit;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            color: var(--text);
+            transition: all 0.25s var(--transition);
+            outline: none;
+            box-shadow: var(--shadow);
+        }
+
+        .input-wrapper input:focus,
+        .input-wrapper textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light), var(--shadow);
+        }
+
+        .input-wrapper input::placeholder,
+        .input-wrapper textarea::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-wrapper textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .instagram-input {
+            display: flex;
+            align-items: center;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.25s var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .instagram-input:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-light), var(--shadow);
+        }
+
+        .instagram-prefix {
+            padding: 1rem 0 1rem 1.25rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .instagram-input input {
+            flex: 1;
+            padding: 1rem 1.25rem 1rem 0;
+            font-size: 1rem;
+            font-family: inherit;
+            background: transparent;
+            border: none;
+            color: var(--text);
+            outline: none;
+        }
+
+        .instagram-input input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .input-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .input-error {
+            color: var(--error);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .input-error.show {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            animation: shake 0.4s var(--transition);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        /* Options (Radio & Checkbox) */
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.625rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            padding: 1rem 1.25rem;
+            background: var(--card);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.25s var(--transition);
+            box-shadow: var(--shadow);
+            user-select: none;
+        }
+
+        .option:hover {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .option.selected {
+            border-color: var(--accent);
+            background: var(--accent-light);
+        }
+
+        .option input {
+            display: none;
+        }
+
+        .option-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.25s var(--transition);
+        }
+
+        .option.selected .option-check {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .option.selected .option-check::after {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+            animation: checkPop 0.3s var(--transition);
+        }
+
+        .option-checkbox .option-check {
+            border-radius: 4px;
+        }
+
+        .option.selected .option-checkbox-icon::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid #fff;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg) translateY(-1px);
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .option-label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        /* Navigation */
+        .step-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-next {
+            flex: 1;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: inherit;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-next:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        .btn-next:active {
+            transform: translateY(0);
+        }
+
+        .btn-next svg {
+            transition: transform 0.3s var(--transition);
+        }
+
+        .btn-next:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-back {
+            padding: 1rem 1.25rem;
+            background: transparent;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-back:hover {
+            border-color: var(--text-muted);
+            color: var(--text);
+        }
+
+        /* Success */
+        .success-screen {
+            display: none;
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            animation: stepIn 0.5s var(--transition);
+        }
+
+        .success-screen.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 88px;
+            height: 88px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+            50% { box-shadow: 0 0 0 20px transparent; }
+        }
+
+        .success-icon svg {
+            width: 44px;
+            height: 44px;
+            color: #fff;
+        }
+
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .success-message {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 420px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        .success-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: #25D366;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: 600;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s var(--transition);
+        }
+
+        .success-whatsapp:hover {
+            background: #1da851;
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            top: -10px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Loading */
+        .btn-next.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .btn-next.loading .btn-text {
+            display: none;
+        }
+
+        .btn-next .spinner {
+            display: none;
+        }
+
+        .btn-next.loading .spinner {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Keyboard hint */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            opacity: 0;
+            animation: fadeIn 0.5s var(--transition) 2s forwards;
+            z-index: 10;
+        }
+
+        .keyboard-hint kbd {
+            padding: 0.2rem 0.4rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Step question for multiple choice */
+        .multi-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .multi-question:last-child {
+            margin-bottom: 0;
+        }
+
+        .multi-question .step-question {
+            font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+            margin-bottom: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .form-header {
+                padding: 1rem 1.25rem;
+            }
+
+            .form-main {
+                padding: 2rem 1.25rem;
+            }
+
+            .step-actions {
+                flex-direction: column-reverse;
+            }
+
+            .btn-back {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .progress-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .keyboard-hint {
+                display: none;
+            }
+
+            .option {
+                padding: 0.875rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="bg-pattern"></div>
+
+    <!-- Welcome -->
+    <div class="welcome" id="welcome">
+        <div class="welcome-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+            Grátis
+        </div>
+        <h1 class="welcome-title">
+            Consultoria de Diagnóstico para <span>empreendedoras</span> da área de beleza e estética
+        </h1>
+        <p class="welcome-subtitle">
+            Este é o primeiro passo para entendermos onde você está e qual o melhor caminho para o seu negócio. Ao responder, seja clara e precisa. Quanto mais detalhes você compartilhar, mais assertivo será o direcionamento que irei preparar para você. Vamos juntas?
+        </p>
+        <button class="welcome-btn" id="startBtn">
+            Iniciar diagnóstico
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Form -->
+    <div class="form-container" id="formContainer">
+        <header class="form-header">
+            <div class="form-brand">
+                Rhaiane Pereira
+            </div>
+            <div class="progress-indicator" id="progressIndicator">
+                <div class="progress-dot active" data-step="1"></div>
+                <div class="progress-dot" data-step="2"></div>
+                <div class="progress-dot" data-step="3"></div>
+                <div class="progress-dot" data-step="4"></div>
+                <div class="progress-dot" data-step="5"></div>
+                <div class="progress-dot" data-step="6"></div>
+                <div class="progress-dot" data-step="7"></div>
+            </div>
+        </header>
+
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <main class="form-main">
+
+            <!-- Step 1: Nome -->
+            <div class="step active" data-step="1">
+                <div class="step-number">Passo 1 de 7</div>
+                <h2 class="step-question">Qual o seu nome?</h2>
+                <p class="step-description">Vamos começar! Como você gostaria de ser chamada?</p>
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <input type="text" id="nome" placeholder="Seu primeiro nome" autocomplete="name">
+                    </div>
+                    <div class="input-error" id="nomeError">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Por favor, insira seu nome
+                    </div>
+                </div>
+                <div class="step-actions">
+                    <button class="btn-next" data-next="2">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Área -->
+            <div class="step" data-step="2">
+                <div class="step-number">Passo 2 de 7</div>
+                <h2 class="step-question">Qual a sua área de atuação?</h2>
+                <p class="step-description">Selecione uma opção:</p>
+                <div class="options-group" data-name="area" data-multiple="false">
+                    <label class="option" data-value="cabeleireira">
+                        <input type="radio" name="area" value="cabeleireira">
+                        <span class="option-check"></span>
+                        <span class="option-label">Cabeleireira</span>
+                    </label>
+                    <label class="option" data-value="design-sobrancelhas">
+                        <input type="radio" name="area" value="design-sobrancelhas">
+                        <span class="option-check"></span>
+                        <span class="option-label">Design de Sobrancelhas</span>
+                    </label>
+                    <label class="option" data-value="cilios">
+                        <input type="radio" name="area" value="cilios">
+                        <span class="option-check"></span>
+                        <span class="option-label">Alongamento de Cílios</span>
+                    </label>
+                    <label class="option" data-value="manicure">
+                        <input type="radio" name="area" value="manicure">
+                        <span class="option-check"></span>
+                        <span class="option-label">Manicure / Nail Design</span>
+                    </label>
+                </div>
+                <div class="input-error" id="areaError">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Selecione sua área de atuação
+                </div>
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="1">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" data-next="3">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Tempo -->
+            <div class="step" data-step="3">
+                <div class="step-number">Passo 3 de 7</div>
+                <h2 class="step-question">Há quanto tempo você atua na área?</h2>
+                <p class="step-description">Selecione uma opção:</p>
+                <div class="options-group" data-name="tempo" data-multiple="false">
+                    <label class="option" data-value="menos-6">
+                        <input type="radio" name="tempo" value="menos-6">
+                        <span class="option-check"></span>
+                        <span class="option-label">Menos de 6 meses</span>
+                    </label>
+                    <label class="option" data-value="6-1">
+                        <input type="radio" name="tempo" value="6-1">
+                        <span class="option-check"></span>
+                        <span class="option-label">De 6 meses a 1 ano</span>
+                    </label>
+                    <label class="option" data-value="1-5">
+                        <input type="radio" name="tempo" value="1-5">
+                        <span class="option-check"></span>
+                        <span class="option-label">De 1 a 5 anos</span>
+                    </label>
+                    <label class="option" data-value="mais-5">
+                        <input type="radio" name="tempo" value="mais-5">
+                        <span class="option-check"></span>
+                        <span class="option-label">Mais de 5 anos</span>
+                    </label>
+                    <label class="option" data-value="mais-10">
+                        <input type="radio" name="tempo" value="mais-10">
+                        <span class="option-check"></span>
+                        <span class="option-label">Mais de 10 anos</span>
+                    </label>
+                </div>
+                <div class="input-error" id="tempoError">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Selecione há quanto tempo atua
+                </div>
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" data-next="4">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 4: Frequência -->
+            <div class="step" data-step="4">
+                <div class="step-number">Passo 4 de 7</div>
+                <h2 class="step-question">Qual a frequência que você publica no Instagram hoje?</h2>
+                <p class="step-description">Selecione uma opção:</p>
+                <div class="options-group" data-name="frequencia" data-multiple="false">
+                    <label class="option" data-value="todos-dias">
+                        <input type="radio" name="frequencia" value="todos-dias">
+                        <span class="option-check"></span>
+                        <span class="option-label">Todos os dias</span>
+                    </label>
+                    <label class="option" data-value="3-5-semana">
+                        <input type="radio" name="frequencia" value="3-5-semana">
+                        <span class="option-check"></span>
+                        <span class="option-label">De 3 a 5 vezes na semana</span>
+                    </label>
+                    <label class="option" data-value="1-semana">
+                        <input type="radio" name="frequencia" value="1-semana">
+                        <span class="option-check"></span>
+                        <span class="option-label">Uma vez na semana</span>
+                    </label>
+                    <label class="option" data-value="raro">
+                        <input type="radio" name="frequencia" value="raro">
+                        <span class="option-check"></span>
+                        <span class="option-label">Raramente publico</span>
+                    </label>
+                </div>
+                <div class="input-error" id="frequenciaError">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Selecione a frequência de publicações
+                </div>
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="3">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" data-next="5">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 5: Produtos Digitais -->
+            <div class="step" data-step="5">
+                <div class="step-number">Passo 5 de 7</div>
+                <h2 class="step-question">Você possui produtos digitais à venda?</h2>
+                <p class="step-description">Ex: Cursos, mentorias ou e-books</p>
+                <div class="options-group" data-name="produtos_digitais" data-multiple="false">
+                    <label class="option" data-value="sim">
+                        <input type="radio" name="produtos_digitais" value="sim">
+                        <span class="option-check"></span>
+                        <span class="option-label">Sim</span>
+                    </label>
+                    <label class="option" data-value="nao">
+                        <input type="radio" name="produtos_digitais" value="nao">
+                        <span class="option-check"></span>
+                        <span class="option-label">Não</span>
+                    </label>
+                </div>
+                <div class="input-error" id="produtos_digitaisError">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Selecione uma opção
+                </div>
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="4">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" data-next="6">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 6: Instagram -->
+            <div class="step" data-step="6">
+                <div class="step-number">Passo 6 de 7</div>
+                <h2 class="step-question">Qual o @ do seu Instagram?</h2>
+                <p class="step-description">Campo de texto livre</p>
+                <div class="input-group">
+                    <div class="instagram-input">
+                        <span class="instagram-prefix">@</span>
+                        <input type="text" id="instagram" placeholder="seuinstagram" autocomplete="off">
+                    </div>
+                </div>
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="5">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" data-next="7">
+                        <span class="btn-text">Continuar</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 7: Desafio + WhatsApp -->
+            <div class="step" data-step="7">
+                <div class="step-number">Passo 7 de 7</div>
+
+                <div class="multi-question">
+                    <h2 class="step-question">Qual o seu maior desafio hoje?</h2>
+                    <p class="step-description">Selecione a opção que mais se aplica:</p>
+                    <div class="options-group" data-name="desafio" data-multiple="false">
+                        <label class="option" data-value="conteudo">
+                            <input type="radio" name="desafio" value="conteudo">
+                            <span class="option-check"></span>
+                            <span class="option-label">Criar conteúdo consistente</span>
+                        </label>
+                        <label class="option" data-value="engajamento">
+                            <input type="radio" name="desafio" value="engajamento">
+                            <span class="option-check"></span>
+                            <span class="option-label">Aumentar engajamento</span>
+                        </label>
+                        <label class="option" data-value="conversao">
+                            <input type="radio" name="desafio" value="conversao">
+                            <span class="option-check"></span>
+                            <span class="option-label">Converter seguidores em clientes</span>
+                        </label>
+                        <label class="option" data-value="tempo">
+                            <input type="radio" name="desafio" value="tempo">
+                            <span class="option-check"></span>
+                            <span class="option-label">Falta de tempo para as redes sociais</span>
+                        </label>
+                        <label class="option" data-value="nao-sei">
+                            <input type="radio" name="desafio" value="nao-sei">
+                            <span class="option-check"></span>
+                            <span class="option-label">Não sei o que postar</span>
+                        </label>
+                        <label class="option" data-value="vender">
+                            <input type="radio" name="desafio" value="vender">
+                            <span class="option-check"></span>
+                            <span class="option-label">Vender mais</span>
+                        </label>
+                    </div>
+                    <div class="input-error" id="desafioError">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Selecione seu maior desafio
+                    </div>
+                </div>
+
+                <div class="multi-question" style="margin-top: 1.5rem;">
+                    <h2 class="step-question">Qual seu WhatsApp?</h2>
+                    <p class="step-description">É por aqui que enviaremos seu diagnóstico personalizado.</p>
+                    <div class="input-wrapper">
+                        <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" autocomplete="tel">
+                    </div>
+                    <div class="input-error" id="whatsappError">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        Por favor, insira seu WhatsApp
+                    </div>
+                </div>
+
+                <div class="step-actions">
+                    <button class="btn-back" data-prev="6">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                    </button>
+                    <button class="btn-next" id="submitBtn">
+                        <span class="btn-text">Enviar diagnóstico</span>
+                        <div class="spinner"></div>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div class="success-screen" id="successScreen">
+                <div class="success-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                </div>
+                <h2 class="success-title">Diagnóstico enviado com sucesso!</h2>
+                <p class="success-message">
+                    Recebi seu diagnóstico! Vou analisar com carinho as informações que você enviou. Entrarei em contato pelo WhatsApp que você informou (ou me chame se tiver urgência) para falarmos sobre o próximo passo. Obrigada pela confiança, Rhaiane Pereira.
+                </p>
+                <a href="https://wa.me/55" class="success-whatsapp" id="whatsappLink" target="_blank" rel="noopener">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Falar no WhatsApp
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <div class="keyboard-hint">
+        Pressione <kbd>Enter</kbd> para continuar
+    </div>
+</div>
+
+<script>
+    const welcome = document.getElementById('welcome');
+    const formContainer = document.getElementById('formContainer');
+    const startBtn = document.getElementById('startBtn');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    const progressBar = document.getElementById('progressBar');
+    const steps = document.querySelectorAll('.step');
+    const successScreen = document.getElementById('successScreen');
+    const submitBtn = document.getElementById('submitBtn');
+    const whatsappLink = document.getElementById('whatsappLink');
+    const totalSteps = 7;
+
+    let currentStep = 1;
+
+    const formData = {
+        nome: '',
+        area: '',
+        tempo: '',
+        frequencia: '',
+        produtos_digitais: '',
+        instagram: '',
+        desafio: '',
+        whatsapp: ''
+    };
+
+    // Load saved data
+    function loadSaved() {
+        try {
+            const saved = localStorage.getItem('rhaiane_diagnostico');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.assign(formData, data);
+                document.getElementById('nome').value = data.nome || '';
+                document.getElementById('instagram').value = data.instagram || '';
+                document.getElementById('whatsapp').value = data.whatsapp || '';
+            }
+        } catch (e) {}
+    }
+
+    function saveData() {
+        try {
+            localStorage.setItem('rhaiane_diagnostico', JSON.stringify(formData));
+        } catch (e) {}
+    }
+
+    loadSaved();
+
+    // Welcome
+    startBtn.addEventListener('click', () => {
+        welcome.classList.add('hidden');
+        setTimeout(() => formContainer.classList.add('active'), 400);
+        setTimeout(() => document.querySelector('.step.active input, .step.active textarea')?.focus(), 600);
+    });
+
+    // Option selection (radio/checkbox)
+    document.querySelectorAll('.option').forEach(opt => {
+        opt.addEventListener('click', (e) => {
+            const group = opt.closest('.options-group');
+            const isMultiple = group.dataset.multiple === 'true';
+            const input = opt.querySelector('input');
+
+            if (isMultiple) {
+                input.checked = !input.checked;
+                opt.classList.toggle('selected', input.checked);
+                updateCheckboxes(group);
+            } else {
+                group.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+                group.querySelectorAll('input').forEach(i => i.checked = false);
+                input.checked = true;
+                opt.classList.add('selected');
+                updateRadio(group);
+            }
+        });
+    });
+
+    function updateRadio(group) {
+        const name = group.dataset.name;
+        const selected = group.querySelector('input:checked');
+        formData[name] = selected ? selected.value : '';
+        saveData();
+        const error = document.getElementById(name + 'Error');
+        if (error) error.classList.remove('show');
+    }
+
+    function updateCheckboxes(group) {
+        const name = group.dataset.name;
+        const checked = group.querySelectorAll('input:checked');
+        formData[name] = Array.from(checked).map(i => i.value);
+        saveData();
+        const error = document.getElementById(name + 'Error');
+        if (error && formData[name].length > 0) error.classList.remove('show');
+    }
+
+    // Text inputs
+    const textInputs = {
+        nome: document.getElementById('nome'),
+        instagram: document.getElementById('instagram'),
+        whatsapp: document.getElementById('whatsapp')
+    };
+
+    Object.keys(textInputs).forEach(key => {
+        const el = textInputs[key];
+        if (!el) return;
+        el.addEventListener('input', (e) => {
+            formData[key] = e.target.value;
+            saveData();
+            const error = document.getElementById(key + 'Error');
+            if (error && e.target.value.trim()) error.classList.remove('show');
+        });
+    });
+
+    // Instagram formatting
+    const instaInput = document.getElementById('instagram');
+    if (instaInput) {
+        instaInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[@\s]/g, '').toLowerCase();
+            formData.instagram = e.target.value;
+            saveData();
+        });
+    }
+
+    // WhatsApp formatting
+    const wppInput = document.getElementById('whatsapp');
+    if (wppInput) {
+        wppInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                if (value.length <= 2) value = '(' + value;
+                else if (value.length <= 7) value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+                else value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7, 11);
+            }
+            e.target.value = value;
+            formData.whatsapp = value;
+            saveData();
+            const error = document.getElementById('whatsappError');
+            if (error && value.trim()) error.classList.remove('show');
+        });
+    }
+
+    // Navigation
+    document.querySelectorAll('.btn-next').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const next = parseInt(btn.dataset.next);
+            if (btn.id === 'submitBtn') {
+                if (validateStep(currentStep)) submitForm();
+            } else if (next && validateStep(currentStep)) {
+                goToStep(next);
+            }
+        });
+    });
+
+    document.querySelectorAll('.btn-back').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const prev = parseInt(btn.dataset.prev);
+            if (prev) goToStep(prev);
+        });
+    });
+
+    // Keyboard
+    document.addEventListener('keydown', (e) => {
+        if (!formContainer.classList.contains('active')) return;
+        if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+            e.preventDefault();
+            const stepEl = document.querySelector('.step[data-step="' + currentStep + '"]');
+            const nextBtn = stepEl?.querySelector('.btn-next');
+            if (nextBtn) {
+                const next = parseInt(nextBtn.dataset.next);
+                if (nextBtn.id === 'submitBtn') {
+                    if (validateStep(currentStep)) submitForm();
+                } else if (next && validateStep(currentStep)) {
+                    goToStep(next);
+                }
+            }
+        }
+    });
+
+    // Validation
+    function validateStep(step) {
+        let valid = true;
+
+        if (step === 1) {
+            if (!formData.nome.trim()) { showError('nomeError'); valid = false; }
+        } else if (step === 2) {
+            if (!formData.area) { showError('areaError'); valid = false; }
+        } else if (step === 3) {
+            if (!formData.tempo) { showError('tempoError'); valid = false; }
+        } else if (step === 4) {
+            if (!formData.frequencia) { showError('frequenciaError'); valid = false; }
+        } else if (step === 5) {
+            if (!formData.produtos_digitais) { showError('produtos_digitaisError'); valid = false; }
+        } else if (step === 7) {
+            if (!formData.desafio) { showError('desafioError'); valid = false; }
+            if (!formData.whatsapp.trim()) { showError('whatsappError'); valid = false; }
+        }
+
+        return valid;
+    }
+
+    function showError(id) {
+        const el = document.getElementById(id);
+        if (el) el.classList.add('show');
+    }
+
+    function goToStep(step) {
+        const current = document.querySelector('.step[data-step="' + currentStep + '"]');
+        const next = document.querySelector('.step[data-step="' + step + '"]');
+        if (!next) return;
+
+        current.classList.remove('active');
+        next.classList.add('active');
+        currentStep = step;
+        updateProgress();
+
+        setTimeout(() => {
+            const first = next.querySelector('input:not([type="radio"]):not([type="checkbox"]), textarea, .option');
+            if (first && first.tagName === 'LABEL') first.focus();
+            else if (first) first.focus();
+        }, 150);
+    }
+
+    function updateProgress() {
+        progressDots.forEach((dot, i) => {
+            const s = i + 1;
+            dot.classList.remove('active', 'completed');
+            if (s < currentStep) dot.classList.add('completed');
+            else if (s === currentStep) dot.classList.add('active');
+        });
+        progressBar.style.width = ((currentStep - 1) / totalSteps * 100) + '%';
+    }
+
+    // Submit
+    function submitForm() {
+        submitBtn.classList.add('loading');
+
+        const payload = new URLSearchParams();
+        payload.append('entry.250419839', formData.nome);
+        payload.append('entry.1278661891', 'Área: ' + formData.area);
+        payload.append('entry.1405894925', '@' + formData.instagram);
+        payload.append('entry.1568620711', 'Tempo: ' + formData.tempo + ' | Frequência: ' + formData.frequencia + ' | Produtos Digitais: ' + formData.produtos_digitais + ' | Desafio: ' + formData.desafio);
+        payload.append('entry.307988919', formData.whatsapp);
+        payload.append('fvv', '1');
+        payload.append('partialResponse', '[null,null,"-6908351503927638620"]');
+        payload.append('pageHistory', '0');
+        payload.append('fbzx', '-6908351503927638620');
+
+        const url = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdbdK8-Q3n2WeD__gj-ysda1b6M0e8jWrywZ9LNLcWauhJRxg/formResponse';
+
+        fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: payload.toString()
+        }).then(showSuccess).catch(() => showSuccess());
+    }
+
+    function showSuccess() {
+        steps.forEach(s => s.classList.remove('active'));
+        successScreen.classList.add('active');
+        progressBar.style.width = '100%';
+        progressDots.forEach(d => d.classList.add('completed'));
+        localStorage.removeItem('rhaiane_diagnostico');
+        createConfetti();
+
+        const num = formData.whatsapp.replace(/\D/g, '');
+        whatsappLink.href = 'https://wa.me/55' + num;
+    }
+
+    function createConfetti() {
+        const colors = ['#3bb3b2', '#2d9e9d', '#86d9d8', '#cef0ef'];
+        for (let i = 0; i < 80; i++) {
+            const el = document.createElement('div');
+            el.className = 'confetti';
+            el.style.left = Math.random() * 100 + 'vw';
+            el.style.background = colors[Math.floor(Math.random() * colors.length)];
+            el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+            el.style.width = (Math.random() * 6 + 4) + 'px';
+            el.style.height = (Math.random() * 6 + 4) + 'px';
+            document.body.appendChild(el);
+            const anim = el.animate([
+                { top: '-10px', opacity: 1, transform: 'rotate(0deg)' },
+                { top: '100vh', opacity: 0, transform: 'rotate(' + (Math.random() * 720 - 360) + 'deg) translateX(' + (Math.random() * 160 - 80) + 'px)' }
+            ], {
+                duration: Math.random() * 2000 + 2000,
+                easing: 'cubic-bezier(.25,.46,.45,.94)',
+                delay: Math.random() * 600
+            });
+            anim.onfinish = () => el.remove();
+        }
+    }
+
+    // Restore previously selected options from saved data
+    document.querySelectorAll('.options-group').forEach(group => {
+        const name = group.dataset.name;
+        const isMultiple = group.dataset.multiple === 'true';
+        if (!formData[name]) return;
+
+        if (isMultiple) {
+            const vals = formData[name];
+            group.querySelectorAll('.option').forEach(opt => {
+                const input = opt.querySelector('input');
+                if (vals.includes(input.value)) {
+                    input.checked = true;
+                    opt.classList.add('selected');
+                }
+            });
+        } else {
+            const val = formData[name];
+            group.querySelectorAll('.option').forEach(opt => {
+                const input = opt.querySelector('input');
+                if (input.value === val) {
+                    input.checked = true;
+                    opt.classList.add('selected');
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>
